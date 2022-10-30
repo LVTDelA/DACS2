@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\CoffeeBrand;
 use App\Models\CoffeeCategory;
 use App\Models\CoffeeProduct;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         $categories = CoffeeCategory::all();
+        $brands = CoffeeBrand::all();
 
         $perPage = $request->show ?? 3;
         $sortBy = $request->sort_by ?? 'latest';
@@ -36,11 +38,21 @@ class ShopController extends Controller
 
 
 //        dd($products->links());
-        return view('front.shop.index', compact('categories','products'));
+        return view('front.shop.index', compact('categories', 'brands', 'products'));
     }
 
-    public function category() {
+    public function category($categoryName, Request $request) {
+        $categories = CoffeeCategory::all();
+        $brands = CoffeeBrand::all();
 
+        $perPage = $request->show ?? 3;
+        $sortBy = $request->sort_by ?? 'latest';
+
+        $products = CoffeeCategory::where('name', $categoryName)->first()->CoffeeProducts->toQuery();
+
+        $products = $this->sortAndPagination($products, $sortBy, $perPage);
+
+        return view('front.shop.index', compact('categories', 'brands', 'products'));
     }
 
     private function sortAndPagination($products, $sortBy, $perPage) {
@@ -69,7 +81,11 @@ class ShopController extends Controller
 
         $products = $products->paginate($perPage);
 
-        $products->appends(['sort_by' => $sortBy, 'show' => $perPage]);
+//        Thêm query trên URL khi sang trang. Cách 1 hoặc 2
+//        1. Thêm query chi tiết
+//        $products->appends(['sort_by' => $sortBy, 'show' => $perPage]);
+//        2.Thêm tất cả query hiện có trên URL
+        $products->withQueryString();
 
         return $products;
     }

@@ -30,41 +30,24 @@
                         <ul class="filter-catagories">
 
                             @foreach($categories as $category)
-                            <li><a href="shop/{{$category->name}}">{{$category->name}}</a></li>
+                                <li><a href="shop/{{$category->name}}">{{$category->name}}</a></li>
                             @endforeach
                         </ul>
                     </div>
                     <div class="filter-widget">
                         <h4 class="fw-title">Hãng Cà Phê</h4>
                         <div class="fw-brand-check">
-                            <div class="bc-item">
-                                <label for="bc-calvin">
-                                    Trung Nguyên
-                                    <input type="checkbox" id="bc-calvin">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-NESCAFE">
-                                    NESCAFE
-                                    <input type="checkbox" id="bc-NESCAFE">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-G8">
-                                    Cafe G8
-                                    <input type="checkbox" id="bc-G8">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-Vinacafe">
-                                    Vinacafe
-                                    <input type="checkbox" id="bc-Vinacafe">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+
+                            @foreach($brands as $brand)
+                                <div class="bc-item">
+                                    <label for="bc-calvin">
+                                        {{$brand->name}}
+                                        <input type="checkbox" id="bc-calvin">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            @endforeach
+
                         </div>
                     </div>
                     <div class="filter-widget">
