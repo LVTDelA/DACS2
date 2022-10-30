@@ -110,19 +110,19 @@
 
                             <ul>
                                 <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="products.html">+ Xem </a></li>
+                                <li class="quick-view"><a href="shop/product/{{$product3->id}}">+ Xem </a></li>
                                 <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                             </ul>
                         </div>
                         <div class="pi-text">
                             <div class="catagory-name">{{$product3->CoffeeBrand->name}}</div>
-                            <a href="#">
+                            <a href="shop/product/{{$product3->id}}">
                                 <h5>{{$product3->name}}</h5>
                             </a>
                             <div class="product-price">
                                 @if($product3->discount != null)
-                                {{$product3->price}} 000₫
-                                <span>{{$product3->discount}} 000₫</span>
+                                {{$product3->discount}} 000₫
+                                <span>{{$product3->price}} 000₫</span>
                                 @else
                                 {{$product3->price}} 000₫
                                 @endif
@@ -187,19 +187,19 @@
 
                             <ul>
                                 <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="products.html">+ Xem </a></li>
+                                <li class="quick-view"><a href="shop/product/{{$product2->id}}">+ Xem </a></li>
                                 <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                             </ul>
                         </div>
                         <div class="pi-text">
                             <div class="catagory-name">{{$product2->CoffeeBrand->name}}</div>
-                            <a href="#">
+                            <a href="shop/product/{{$product2->id}}">
                                 <h5>{{$product2->name}}</h5>
                             </a>
                             <div class="product-price">
                                 @if($product2->discount != null)
-                                {{$product2->price}} 000₫
-                                <span>{{$product2->discount}} 000₫</span>
+                                {{$product2->discount}} 000₫
+                                <span>{{$product2->price}} 000₫</span>
                                 @else
                                 {{$product2->price}} 000₫
                                 @endif
@@ -251,19 +251,19 @@
 
                             <ul>
                                 <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="products.html">+ Xem </a></li>
+                                <li class="quick-view"><a href="shop/product/{{$product1->id}}">+ Xem </a></li>
                                 <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                             </ul>
                         </div>
                         <div class="pi-text">
                             <div class="catagory-name">{{$product1->CoffeeBrand->name}}</div>
-                            <a href="#">
+                            <a href="shop/product/{{$product1->id}}">
                                 <h5>{{$product1->name}}</h5>
                             </a>
                             <div class="product-price">
                                 @if($product1->discount != null)
-                                {{$product1->price}} 000₫
-                                <span>{{$product1->discount}} 000₫</span>
+                                {{$product1->discount}} 000₫
+                                <span>{{$product1->price}} 000₫</span>
                                 @else
                                 {{$product1->price}} 000₫
                                 @endif
@@ -351,7 +351,7 @@
                     <div class="latest-text">
                         <div class="tag-list">
                             <div class="tag-item">
-                                <i class="fa fa-calendar-o"></i> 
+                                <i class="fa fa-calendar-o"></i>
                                 {{date('M d, Y', strtotime($blog->created_at))}}
                             </div>
                             <!-- <div class="tag-item">

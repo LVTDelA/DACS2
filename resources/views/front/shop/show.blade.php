@@ -104,7 +104,8 @@
                         <div class="col-lg-6">
                             <!-- image big -->
                             <div class="product-pic-zoom">
-                                <img class="product-big-img" src="front/img/product-single/{{$product->CoffeeImages[0]->path}}"
+                                <img class="product-big-img"
+                                     src="front/img/product-single/{{$product->CoffeeImages[0]->path}}"
                                      alt="product-1">
                                 <div class="zoom-icon">
                                     <i class="fa fa-search-plus"></i>
@@ -115,9 +116,10 @@
                                 <div class="product-thumbs-track ps-slider owl-carousel">
 
                                     @foreach($product->CoffeeImages as $productImage)
-                                    <div class="pt active" data-imgbigurl="front/img/product-single/p{{$productImage->path}}">
-                                        <img src="/front/img/product-single/{{$productImage->path}}" alt="">
-                                    </div>
+                                        <div class="pt active"
+                                             data-imgbigurl="front/img/product-single/{{$productImage->path}}">
+                                            <img src="front/img/product-single/{{$productImage->path}}" alt="">
+                                        </div>
                                     @endforeach
 
                                 </div>
@@ -132,14 +134,14 @@
                                     <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
                                 </div>
                                 <!-- star -->
-{{--                                <div class="pd-rating">--}}
-{{--                                    <i class="fa fa-star"></i>--}}
-{{--                                    <i class="fa fa-star"></i>--}}
-{{--                                    <i class="fa fa-star"></i>--}}
-{{--                                    <i class="fa fa-star"></i>--}}
-{{--                                    <i class="fa fa-star-o"></i>--}}
-{{--                                    <span>(5)</span>--}}
-{{--                                </div>--}}
+                                {{--                                <div class="pd-rating">--}}
+                                {{--                                    <i class="fa fa-star"></i>--}}
+                                {{--                                    <i class="fa fa-star"></i>--}}
+                                {{--                                    <i class="fa fa-star"></i>--}}
+                                {{--                                    <i class="fa fa-star"></i>--}}
+                                {{--                                    <i class="fa fa-star-o"></i>--}}
+                                {{--                                    <span>(5)</span>--}}
+                                {{--                                </div>--}}
                                 <!-- moo ta -->
                                 <div class="pd-desc">
                                     <p>
@@ -147,7 +149,7 @@
                                     </p>
 
                                     @if($product->discount != null)
-                                    <h4>{{$product->discount}} 000₫<span>{{$product->price}} 000₫</span></h4>
+                                        <h4>{{$product->discount}} 000₫<span>{{$product->price}} 000₫</span></h4>
                                     @else
                                         <h4>{{$product->price}} 000₫ </h4>
                                     @endif
@@ -162,9 +164,9 @@
                                     </div>
                                 </div>
                                 <!-- pd-tags -->
-{{--                                <ul class="pd-tags">--}}
-{{--                                    <li><span>TAGS</span> : Coffee, Rang xay thường, Trung Nguyên</li>--}}
-{{--                                </ul>--}}
+                                {{--                                <ul class="pd-tags">--}}
+                                {{--                                    <li><span>TAGS</span> : Coffee, Rang xay thường, Trung Nguyên</li>--}}
+                                {{--                                </ul>--}}
                             </div>
                         </div>
                     </div>
@@ -185,118 +187,47 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="/front/img/products/hat-1.jpg" alt="products1">
-                            <div class="sale pp-sale">Sale</div>
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="products.html">+ Xem </a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
+                @foreach($relatedProducts as $relatedProduct)
 
-                        <div class="pi-text">
-                            <div class="catagory-name">Cà phê Success</div>
-                            <a href="#">
-                                <h5>Cà Phê Hạt Rang Success 2 </h5>
-                            </a>
-                            <div class="product-price">
-                                210,000₫
-                                <span>235,000₫</span>
-                            </div>
-                        </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="/front/img/products/{{$relatedProduct->CoffeeImages[0]->path}}"
+                                     alt="products1">
 
+                                @if($relatedProduct->discount != null)
+                                    <div class="sale pp-sale">Sale</div>
+                                @endif
+                                <div class="icon">
+                                    <i class="icon_heart_alt"></i>
+                                </div>
+                                <ul>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="quick-view"><a href="shop/product/{{$relatedProduct->id}}">+ Xem </a></li>
+                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                </ul>
+                            </div>
+
+                            <div class="pi-text">
+                                <div class="catagory-name">{{$relatedProduct->CoffeeBrand->name}}</div>
+                                <a href="shop/product/{{$relatedProduct->id}}">
+                                    <h5>{{$relatedProduct->name}}</h5>
+                                </a>
+
+                                @if($relatedProduct->discount != null)
+                                    <div class="product-price">
+                                        {{$relatedProduct->discount}} 000₫
+                                        <span>{{$product->price}} 000₫</span>
+                                    </div>
+                                @else
+                                    {{$relatedProduct->price}} 000₫
+                                @endif
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="/front/img/products/hat-1.jpg" alt="products1">
-                            <div class="sale pp-sale">Sale</div>
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="products.html">+ Xem </a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
 
-                        <div class="pi-text">
-                            <div class="catagory-name">Cà phê Success</div>
-                            <a href="#">
-                                <h5>Cà Phê Hạt Rang Success 2 </h5>
-                            </a>
-                            <div class="product-price">
-                                210,000₫
-                                <span>235,000₫</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="/front/img/products/hat-1.jpg" alt="products1">
-                            <div class="sale pp-sale">Sale</div>
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="products.html">+ Xem </a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="pi-text">
-                            <div class="catagory-name">Cà phê Success</div>
-                            <a href="#">
-                                <h5>Cà Phê Hạt Rang Success 2 </h5>
-                            </a>
-                            <div class="product-price">
-                                210,000₫
-                                <span>235,000₫</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="/front/img/products/hat-1.jpg" alt="products1">
-                            <div class="sale pp-sale">Sale</div>
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="products.html">+ Xem </a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="pi-text">
-                            <div class="catagory-name">Cà phê Success</div>
-                            <a href="#">
-                                <h5>Cà Phê Hạt Rang Success 2 </h5>
-                            </a>
-                            <div class="product-price">
-                                210,000₫
-                                <span>235,000₫</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
