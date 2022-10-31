@@ -24,79 +24,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Loại Cà Phê</h4>
-                        <ul class="filter-catagories">
-                            <li><a href="#">Cao cấp</a></li>
-                            <li><a href="#">Rang xay/ Hạt</a></li>
-                            <li><a href="#">Hòa Tan</a></li>
-                        </ul>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Hãng Cà Phê</h4>
-                        <div class="fw-brand-check">
-                            <div class="bc-item">
-                                <label for="bc-calvin">
-                                    Trung Nguyên
-                                    <input type="checkbox" id="bc-calvin">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-NESCAFE">
-                                    NESCAFE
-                                    <input type="checkbox" id="bc-NESCAFE">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-G8">
-                                    Cafe G8
-                                    <input type="checkbox" id="bc-G8">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-Vinacafe">
-                                    Vinacafe
-                                    <input type="checkbox" id="bc-Vinacafe">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Giá cả</h4>
-                        <!-- find price in shop page  -->
-                        <div class="filter-range-wrap">
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" name="" id="minamount">
-                                    <input type="text" name="" id="maxamount">
-                                </div>
-                            </div>
-                            <div
-                                class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="33" data-max="98">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                        </div>
-                        <a href="#" class="filter-btn">Tìm</a>
-                    </div>
-                    <!-- tags -->
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Tags</h4>
-                        <div class="fw-tags">
-                            <a href="#">Trung Nguyên</a>
-                            <a href="#">Nescafe</a>
-                            <a href="#">Cafe Arabica</a>
-                            <a href="#">Cafe Chồn</a>
-                            <a href="#">Cafe Cherry</a>
-                            <a href="#">Cafe ROBUSTA </a>
-                        </div>
-                    </div>
+
+                    @include('front.shop.components.products-sidebar-filter')
 
                 </div>
                 <div class="col-lg-9">

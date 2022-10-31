@@ -25,64 +25,7 @@
                 <!-- left column -->
                 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
                     <!-- Col Phân loại bên trái page -->
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Loại Cà Phê</h4>
-                        <ul class="filter-catagories">
-
-                            @foreach($categories as $category)
-                                <li><a href="shop/{{$category->name}}">{{$category->name}}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Hãng Cà Phê</h4>
-                        <div class="fw-brand-check">
-
-                            @foreach($brands as $brand)
-                                <div class="bc-item">
-                                    <label for="bc-calvin">
-                                        {{$brand->name}}
-                                        <input type="checkbox" id="bc-calvin">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                            @endforeach
-
-                        </div>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Giá cả</h4>
-                        <!-- find price in shop page  -->
-                        <div class="filter-range-wrap">
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" name="" id="minamount">
-                                    <input type="text" name="" id="maxamount">
-                                </div>
-                            </div>
-                            <div
-                                class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="33" data-max="98">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                        </div>
-                        <a href="#" class="filter-btn">Tìm</a>
-                    </div>
-                    <!-- tags -->
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Tags</h4>
-                        <div class="fw-tags">
-                            <a href="#">Trung Nguyên</a>
-                            <a href="#">Nescafe</a>
-                            <a href="#">Cafe Arabica</a>
-                            <a href="#">Cafe Chồn</a>
-                            <a href="#">Cafe Cherry</a>
-                            <a href="#">Cafe ROBUSTA </a>
-                        </div>
-                    </div>
-
+                    @include('front.shop.components.products-sidebar-filter')
                 </div>
                 <!-- products display part -->
                 <div class="col-lg-9 order-1 order-lg-2">

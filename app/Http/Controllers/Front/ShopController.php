@@ -13,6 +13,9 @@ class ShopController extends Controller
     //
     public function show($id)
     {
+        $categories = CoffeeCategory::all();
+        $brands = CoffeeBrand::all();
+
         $product = CoffeeProduct::findOrfail($id);
 
         $relatedProducts = CoffeeProduct::
@@ -21,7 +24,7 @@ class ShopController extends Controller
             ->get();
 
 //        dd($product);
-        return view('front.shop.show', compact('product', 'relatedProducts'));
+        return view('front.shop.show', compact('categories', 'brands', 'product', 'relatedProducts'));
     }
 
     public function index(Request $request)
@@ -34,6 +37,8 @@ class ShopController extends Controller
         $search = $request->search ?? '';
 
         $products = CoffeeProduct::where('name', 'like', '%' . $search . '%');
+
+        $products = $this->filter($products, $request);
         $products = $this->sortAndPagination($products, $sortBy, $perPage);
 
 
@@ -41,7 +46,8 @@ class ShopController extends Controller
         return view('front.shop.index', compact('categories', 'brands', 'products'));
     }
 
-    public function category($categoryName, Request $request) {
+    public function category($categoryName, Request $request)
+    {
         $categories = CoffeeCategory::all();
         $brands = CoffeeBrand::all();
 
@@ -50,12 +56,14 @@ class ShopController extends Controller
 
         $products = CoffeeCategory::where('name', $categoryName)->first()->CoffeeProducts->toQuery();
 
+        $products = $this->filter($products, $request);
         $products = $this->sortAndPagination($products, $sortBy, $perPage);
 
         return view('front.shop.index', compact('categories', 'brands', 'products'));
     }
 
-    private function sortAndPagination($products, $sortBy, $perPage) {
+    private function sortAndPagination($products, $sortBy, $perPage)
+    {
         switch ($sortBy) {
             case 'latest':
                 $products = $products->orderBy('id');
@@ -86,6 +94,21 @@ class ShopController extends Controller
 //        $products->appends(['sort_by' => $sortBy, 'show' => $perPage]);
 //        2.Thêm tất cả query hiện có trên URL
         $products->withQueryString();
+
+        return $products;
+    }
+
+    private function filter($products, Request $request)
+    {
+        $brand_ids = array_keys($request->brand ?? []);
+
+        if ($brand_ids != null) $products = $products->whereIn('id_coffee_brand', $brand_ids);
+
+
+        $priceMin = str_replace(' 000₫', '', $request->price_min);
+        $priceMax = str_replace(' 000₫', '', $request->price_max);
+
+        if ($priceMin != null && $priceMax != null) $products->whereBetween('price', [$priceMin, $priceMax]);
 
         return $products;
     }
