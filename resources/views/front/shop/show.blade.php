@@ -119,41 +119,7 @@
                 @foreach($relatedProducts as $relatedProduct)
 
                     <div class="col-lg-3 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="/front/img/products/{{$relatedProduct->CoffeeImages[0]->path}}"
-                                     alt="products1">
-
-                                @if($relatedProduct->discount != null)
-                                    <div class="sale pp-sale">Sale</div>
-                                @endif
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="shop/product/{{$relatedProduct->id}}">+ Xem </a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-
-                            <div class="pi-text">
-                                <div class="catagory-name">{{$relatedProduct->CoffeeBrand->name}}</div>
-                                <a href="shop/product/{{$relatedProduct->id}}">
-                                    <h5>{{$relatedProduct->name}}</h5>
-                                </a>
-
-                                @if($relatedProduct->discount != null)
-                                    <div class="product-price">
-                                        {{$relatedProduct->discount}} 000₫
-                                        <span>{{$product->price}} 000₫</span>
-                                    </div>
-                                @else
-                                    {{$relatedProduct->price}} 000₫
-                                @endif
-                            </div>
-
-                        </div>
+                        @include('front.components.product-item', ['product' => $relatedProduct])
                     </div>
 
                 @endforeach

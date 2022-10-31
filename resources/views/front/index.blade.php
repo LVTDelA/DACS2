@@ -96,39 +96,7 @@
                 </div>
                 <div class="product-slider owl-carousel">
                     @foreach($product3s as $product3)
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="/front/img/products/{{$product3->CoffeeImages[0]->path}}" alt="">
-
-                            @if($product3->discount != null)
-                            <div class="sale">Sale</div>
-                            @endif
-
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="shop/product/{{$product3->id}}">+ Xem </a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">{{$product3->CoffeeBrand->name}}</div>
-                            <a href="shop/product/{{$product3->id}}">
-                                <h5>{{$product3->name}}</h5>
-                            </a>
-                            <div class="product-price">
-                                @if($product3->discount != null)
-                                {{$product3->discount}} 000₫
-                                <span>{{$product3->price}} 000₫</span>
-                                @else
-                                {{$product3->price}} 000₫
-                                @endif
-                            </div>
-                        </div>
-                    </div>
+                        @include('front.components.product-item', ['product' => $product3])
                     @endforeach
                 </div>
             </div>
@@ -173,39 +141,7 @@
                 <div class="product-slider owl-carousel">
 
                     @foreach($product2s as $product2)
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="/front/img/products/{{$product2->CoffeeImages[0]->path}}" alt="">
-
-                            @if($product2->discount != null)
-                            <div class="sale">Sale</div>
-                            @endif
-
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="shop/product/{{$product2->id}}">+ Xem </a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">{{$product2->CoffeeBrand->name}}</div>
-                            <a href="shop/product/{{$product2->id}}">
-                                <h5>{{$product2->name}}</h5>
-                            </a>
-                            <div class="product-price">
-                                @if($product2->discount != null)
-                                {{$product2->discount}} 000₫
-                                <span>{{$product2->price}} 000₫</span>
-                                @else
-                                {{$product2->price}} 000₫
-                                @endif
-                            </div>
-                        </div>
-                    </div>
+                    @include('front.components.product-item', ['product' => $product2])
                     @endforeach
 
                 </div>
@@ -237,39 +173,7 @@
                 </div>
                 <div class="product-slider owl-carousel">
                     @foreach($product1s as $product1)
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="/front/img/products/{{$product1->CoffeeImages[0]->path}}" alt="">
-
-                            @if($product1->discount != null)
-                            <div class="sale">Sale</div>
-                            @endif
-
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="shop/product/{{$product1->id}}">+ Xem </a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">{{$product1->CoffeeBrand->name}}</div>
-                            <a href="shop/product/{{$product1->id}}">
-                                <h5>{{$product1->name}}</h5>
-                            </a>
-                            <div class="product-price">
-                                @if($product1->discount != null)
-                                {{$product1->discount}} 000₫
-                                <span>{{$product1->price}} 000₫</span>
-                                @else
-                                {{$product1->price}} 000₫
-                                @endif
-                            </div>
-                        </div>
-                    </div>
+                    @include('front.components.product-item', ['product' => $product1])
                     @endforeach
                 </div>
             </div>
