@@ -237,6 +237,7 @@
 	proQty.on('click', '.qtybtn', function () {
 		var $button = $(this);
 		var oldValue = $button.parent().find('input').val();
+
 		if ($button.hasClass('inc')) {
 			var newVal = parseFloat(oldValue) + 1;
 		} else {
@@ -247,7 +248,31 @@
 				newVal = 0;
 			}
 		}
-		$button.parent().find('input').val(newVal);
+		// $button.parent().find('input').val(newVal);
+        if (newVal == 0) {
+            return
+        }
+
+        const rowId = $button.parent().find('input').data('rowid');
+        var $total = $('.cart-total').first();
+        updateCart(rowId, newVal, $button, $total);
 	});
+
+    function updateCart(rowId, qty, $button, $total) {
+        $.ajax({
+            type: "GET",
+            url: "./cart/update?" + $.param({'rowId' : rowId, 'qty' : qty})
+        })
+            .done((data) => {
+                // $button.parent().find('input').val(data['qty']);
+                // $total.first().val(data['total']);
+                // console.log($total);
+
+                window.location.reload();
+            })
+            .fail(() => {
+                alert('Lỗi, hãy thử lại!');
+            })
+    }
 
 })(jQuery);

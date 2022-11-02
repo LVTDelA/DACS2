@@ -96,9 +96,9 @@
                         </li>
                         <!-- cart -->
                         <li class="cart-icon">
-                            <a href="#">
+                            <a href="./cart">
                                 <i class="icon_bag_alt">
-                                    <span>3</span>
+                                    <span>{{Cart::count()}}</span>
                                 </i>
                             </a>
                             <div class="cart-hover">
@@ -106,41 +106,31 @@
                                 <div class="select-items">
                                     <table>
                                         <tbody>
+
+                                        @foreach(Cart::content() as $cart)
                                         <tr>
-                                            <td class="si-pic"><img src="/front/img/select-product-1.jpg" alt=""></td>
+                                            <td class="si-pic"><img src="/front/img/products/{{$cart->options->images[0]->path}}" alt=""></td>
                                             <td class="si-text">
                                                 <div class="product-selected">
-                                                    <p>80,000₫ x 1</p>
-                                                    <h6>Cà phê House Blend</h6>
+                                                    <p>{{$cart->price}} 000₫ x {{$cart->qty}}</p>
+                                                    <h6>{{$cart->name}}</h6>
                                                 </div>
                                             </td>
                                             <td class="si-close">
-                                                <i class="ti-close"></i>
+                                                <i class="ti-close" onclick="window.location='./cart/delete/{{$cart->rowId}}'"></i>
                                             </td>
                                         </tr>
-                                        <!-- pd2 -->
-                                        <tr>
-                                            <td class="si-pic"><img src="/front/img/select-product-2.png" alt=""></td>
-                                            <td class="si-text">
-                                                <div class="product-selected">
-                                                    <p>72,000₫ x 1</p>
-                                                    <h6>Cà phê Sáng tạo 3 Trung Nguyên</h6>
-                                                </div>
-                                            </td>
-                                            <td class="si-close">
-                                                <i class="ti-close"></i>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- total -->
                                 <div class="select-total">
                                     <span>Tổng: </span>
-                                    <h5>152.000₫</h5>
+                                    <h5>{{ Cart::total()}} 000₫</h5>
                                 </div>
                                 <div class="select-button">
-                                    <a href="shopping-cart.html" class="primary-btn view-card">Xem giỏ hàng</a>
+                                    <a href="./cart" class="primary-btn view-card">Xem giỏ hàng</a>
                                     <a href="check-out.html" class="primary-btn checkout-btn">Thanh toán</a>
                                 </div>
                             </div>
