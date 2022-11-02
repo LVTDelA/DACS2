@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->integer("id_product")->unsigned();
             $table->integer("id_order")->unsigned();
+            $table->integer('qty');
             $table->double("amount");
             $table->double("total");
 

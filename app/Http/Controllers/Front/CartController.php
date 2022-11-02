@@ -30,7 +30,7 @@ class CartController extends Controller
     public function index() {
         $carts = Cart::content();
 //        $subtotal = Cart::subtotal();
-        $total = Cart::total();
+        $total = Cart::total(0, null, ' ');
 
         return view('front.shop.cart', compact('carts', 'total'));
     }
@@ -50,6 +50,6 @@ class CartController extends Controller
     public function update(Request $request) {
         Cart::update($request->rowId, $request->qty);
 
-        return ['qty' => $request->qty, 'total' => Cart::total()];
+        return ['qty' => $request->qty, 'total' => Cart::total(0, null, ' ')];
     }
 }

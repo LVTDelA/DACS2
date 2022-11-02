@@ -93,7 +93,7 @@
                                 <ul>
                                     <li class="cart-total">Tổng tiền <span>{{$total}} 000đ</span></li>
                                 </ul>
-                                <a href="./check-out.html" class="proceed-btn">Tiến hành thanh toán</a>
+                                <a href="./checkout" class="proceed-btn">Tiến hành thanh toán</a>
                             </div>
                         </div>
                     </div>

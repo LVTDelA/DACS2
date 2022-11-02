@@ -31,3 +31,8 @@ Route::prefix('cart')->group(function() {
     Route::get('destroy', [Front\CartController::class, 'destroy']);
     Route::get('update', [Front\CartController::class, 'update']);
 });
+
+Route::prefix('checkout')->group(function () {
+    Route::get('/', [Front\CheckOutController::class, 'index']);
+    Route::post('/', [Front\CheckOutController::class, 'addOrder']);
+});

@@ -127,15 +127,15 @@
                                 <!-- total -->
                                 <div class="select-total">
                                     <span>Tổng: </span>
-                                    <h5>{{ Cart::total()}} 000₫</h5>
+                                    <h5>{{ Cart::total(0, null, ' ')}} 000₫</h5>
                                 </div>
                                 <div class="select-button">
                                     <a href="./cart" class="primary-btn view-card">Xem giỏ hàng</a>
-                                    <a href="check-out.html" class="primary-btn checkout-btn">Thanh toán</a>
+                                    <a href="./checkout" class="primary-btn checkout-btn">Thanh toán</a>
                                 </div>
                             </div>
                         </li>
-                        <li class="cart-price">$150.00</li>
+                        <li class="cart-price">{{Cart::total(0, null, ' ')}} 000₫</li>
                     </ul>
                 </div>
             </div>
