@@ -8,7 +8,6 @@ use App\Models\OrderDetail;
 use App\Utilities\VNPay;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
 
 class CheckOutController extends Controller
@@ -52,7 +51,7 @@ class CheckOutController extends Controller
 //        Xóa DL giỏ hàng
             Cart::destroy();
 
-            return redirect('checkout/result')->with('notification', 'Đặt hàng thành công, hãy kiểm tra email của bạn.');
+            return redirect('checkout/result')->with('notification', 'Đặt hàng thành công, cám ơn bạn đã lựa chọn chúng tôi. Hãy kiểm tra email của bạn.');
         } else if ($request->payment_type == 'online_payment') {
             $data_url = VNPay::vnpay_create_payment([
                 'vnp_TxnRef' => $order->id, //id đơn hàng

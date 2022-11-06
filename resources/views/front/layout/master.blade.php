@@ -98,7 +98,7 @@
                         <li class="cart-icon">
                             <a href="./cart">
                                 <i class="icon_bag_alt">
-                                    <span>{{Cart::count()}}</span>
+                                    <span class="cart-count">{{Cart::count()}}</span>
                                 </i>
                             </a>
                             <div class="cart-hover">
@@ -108,7 +108,7 @@
                                         <tbody>
 
                                         @foreach(Cart::content() as $cart)
-                                        <tr>
+                                        <tr data-rowid="{{$cart->rowId}}">
                                             <td class="si-pic"><img src="/front/img/products/{{$cart->options->images[0]->path}}" alt=""></td>
                                             <td class="si-text">
                                                 <div class="product-selected">

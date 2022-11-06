@@ -66,7 +66,8 @@
                                     </td>
                                     <td class="total-price first-row">{{$cart->price * $cart->qty}} 000đ</td>
                                     <td class="close-td first-row">
-                                        <i class="ti-close" onclick="window.location='./cart/delete/{{$cart->rowId}}'"></i>
+{{--                                        <i class="ti-close" onclick="window.location='./cart/delete/{{$cart->rowId}}'"></i>--}}
+                                        <i class="ti-close" data-rowid="{{$cart->rowId}}"></i>
                                     </td>
                                 </tr>
                             @endforeach

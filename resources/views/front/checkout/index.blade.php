@@ -107,7 +107,7 @@
 
                                         @foreach($carts as $cart)
                                             <li class="fw-normal">
-                                                {{$cart->name}}x {{$cart->qty}}
+                                                {{$cart->name}} x {{$cart->qty}}
                                                 <span>{{$cart->price * $cart->qty}} 000đ</span></li>
                                         @endforeach
                                         <li class="total-price">Total <span>{{$total}} 000đ</span></li>

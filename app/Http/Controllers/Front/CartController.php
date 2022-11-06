@@ -10,21 +10,32 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     //
-    public function add($id) {
-        $product = CoffeeProduct::findOrFail($id);
+    public function add(Request $request) {
 
-        Cart::add([
-            'id' => $id,
-            'name' => $product->name,
-            'qty' => 1,
-            'price' => $product->discount ?? $product->price,
-            'weight'=> $product->weight ?? 0,
-            'options' => [
-                'images' => $product->CoffeeImages,
-            ],
-        ]);
+        if ($request->ajax()) {
+            $product = CoffeeProduct::findOrFail($request->productId);
 
-        return back();
+            $response['cart'] = Cart::add([
+                'id' => $product->id,
+                'name' => $product->name,
+                'qty' => 1,
+                'price' => $product->discount ?? $product->price,
+                'weight' => $product->weight ?? 0,
+                'options' => [
+                    'images' => $product->CoffeeImages,
+                ],
+            ]);
+
+
+
+            $response['count'] = Cart::count();
+            $response['total'] = Cart::total(0, '', ' ');
+//            dd(Cart::content());
+//            dd($response);
+            return  $response;
+        }
+
+        return 'abcd';
     }
 
     public function index() {
