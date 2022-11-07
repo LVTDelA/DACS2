@@ -108,7 +108,7 @@
                                         <tbody>
 
                                         @foreach(Cart::content() as $cart)
-                                        <tr data-rowid="{{$cart->rowId}}">
+                                        <tr data-rowId="{{$cart->rowId}}">
                                             <td class="si-pic"><img src="/front/img/products/{{$cart->options->images[0]->path}}" alt=""></td>
                                             <td class="si-text">
                                                 <div class="product-selected">
@@ -117,7 +117,7 @@
                                                 </div>
                                             </td>
                                             <td class="si-close">
-                                                <i class="ti-close" onclick="window.location='./cart/delete/{{$cart->rowId}}'"></i>
+                                                <i class="ti-close" onclick="deleteCart('{{$cart->rowId}}')"></i>
                                             </td>
                                         </tr>
                                         @endforeach

@@ -49,25 +49,24 @@
                             <tbody>
 
                             @foreach($carts as $cart)
-                                <tr>
+                                <tr data-rowId="{{$cart->rowId}}">
                                     <td class="cart-pic first-row">
                                         <img src="front/img/products/{{$cart->options->images[0]->path}}" alt="">
                                     </td>
                                     <td class="cart-title first-row">
                                         <h5>{{$cart->name}}</h5>
                                     </td>
-                                    <td class="p-price first-row">{{$cart->price}} 000đ</td>
+                                    <td class="p-price first-row">{{$cart->price}} 000₫</td>
                                     <td class="qua-col first-row">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="text" value="{{$cart->qty}}" data-rowid="{{$cart->rowId}}">
+                                                <input type="text" value="{{$cart->qty}}" data-rowId="{{$cart->rowId}}">
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="total-price first-row">{{$cart->price * $cart->qty}} 000đ</td>
+                                    <td class="total-price first-row">{{number_format($cart->price * $cart->qty, 0, '.', ' ')}} 000₫</td>
                                     <td class="close-td first-row">
-{{--                                        <i class="ti-close" onclick="window.location='./cart/delete/{{$cart->rowId}}'"></i>--}}
-                                        <i class="ti-close" data-rowid="{{$cart->rowId}}"></i>
+                                        <i class="ti-close" onclick="deleteCart('{{$cart->rowId}}')"></i>
                                     </td>
                                 </tr>
                             @endforeach
@@ -92,7 +91,7 @@
                         <div class="col-lg-4 offset-lg-4">
                             <div class="proceed-checkout">
                                 <ul>
-                                    <li class="cart-total">Tổng tiền <span>{{$total}} 000đ</span></li>
+                                    <li class="cart-total">Tổng tiền <span>{{$total}} 000₫</span></li>
                                 </ul>
                                 <a href="./checkout" class="proceed-btn">Tiến hành thanh toán</a>
                             </div>

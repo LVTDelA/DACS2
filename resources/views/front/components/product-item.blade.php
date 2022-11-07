@@ -11,7 +11,7 @@
         </div>
 
         <ul>
-            <li class="w-icon active"><a style="cursor: pointer" class="add-cart" data-productid="{{$product->id}}"><i class="icon_bag_alt"></i></a></li>
+            <li class="w-icon active"><a onclick="addCart({{$product->id}})" style="cursor: pointer" class="add-cart"><i class="icon_bag_alt"></i></a></li>
             <li class="quick-view"><a href="shop/product/{{$product->id}}">+ Xem </a></li>
             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
         </ul>

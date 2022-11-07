@@ -258,85 +258,119 @@
         }
 
         const rowId = $button.parent().find('input').data('rowid');
-        var $total = $('.cart-total').first();
-        updateCart(rowId, newVal, $button, $total);
-    });
+        // console.log(rowId);
 
-    function updateCart(rowId, qty, $button, $total) {
-        $.ajax({
-            type: "GET",
-            url: "cart/update?" + $.param({'rowId': rowId, 'qty': qty})
-        })
-            .done((response) => {
-                // $button.parent().find('input').val(data['qty']);
-                // $total.first().val(data['total']);
-                // console.log($total);
-
-                window.location.reload();
-            })
-            .fail(() => {
-                alert('Lỗi, hãy thử lại!');
-            })
-    }
-
-    $('.add-cart').on('click', function addCart() {
-        var productId = $(this).data('productid');
-
-        $.ajax({
-            type: 'GET',
-            url: 'cart/add?' + $.param({productId: parseInt(productId)}),
-            // contentType: false,
-        })
-            .done((response) => {
-                $('.cart-count').text(response['count']);
-                $('.select-total h5').text(response['total'] + ' 000₫');
-                $('.cart-price').text(response['total'] + ' 000₫');
-                // console.log(response);
-                var cart = response['cart'];
-
-                var cartHover_tbody = $('.select-items tbody');
-                var cartHover_existItem = cartHover_tbody.find('tr[data-rowid="' + cart.rowId + '"]');
-
-
-                if (cartHover_existItem.length) {
-                    cartHover_existItem.find('.product-selected p').text(cart.price + ' 000₫' + ' x ' + cart.qty);
-                } else {
-                    var newItem =
-                        '<tr data-rowid="' + cart.rowId + '">\n' +
-                        '    <td class="si-pic"><img src="/front/img/products/' + cart.options.images[0].path + '" alt=""></td>\n' +
-                        '    <td class="si-text">\n' +
-                        '        <div class="product-selected">\n' +
-                        '            <p>' + cart.price + ' 000₫ x ' + cart.qty + '</p>\n' +
-                        '            <h6>' + cart.name + '</h6>\n' +
-                        '        </div>\n' +
-                        '    </td>\n' +
-                        '    <td class="si-close">\n' +
-                        '        <i class="ti-close" onclick="window.location=\'./cart/delete/' + cart.rowId + '\'"></i>\n' +
-                        '    </td>\n' +
-                        '</tr>'
-
-                    cartHover_tbody.append(newItem);
-
-                    console.log(response);
-                }
-            })
-            .fail(() => {
-                alert('Lỗi, hãy thử lại.');
-            })
-    })
-
-    $('.ti-close').on('click', function deleteCart() {
-        let rowid = $(this).data('rowid');
-
-        $.ajax({
-            type: 'GET',
-            url: 'cart/delete/' + rowid
-        })
-            .done(() => {
-                window.location.reload();
-            })
-            .fail(() => {
-                alert('Lỗi, hãy thử lại.')
-            })
+        updateCart(rowId, newVal);
     });
 })(jQuery);
+
+function addCart(productId) {
+    $.ajax({
+        type: 'GET',
+        url: 'cart/add?' + $.param({productId: parseInt(productId)}),
+        // contentType: false,
+    })
+        .done((response) => {
+            $('.cart-count').text(response['count']);
+            $('.select-total h5').text(response['total'] + ' 000₫');
+            $('.cart-price').text(response['total'] + ' 000₫');
+            // console.log(response);
+            var cart = response['cart'];
+
+            var cartHover_tbody = $('.select-items tbody');
+            var cartHover_existItem = cartHover_tbody.find('tr[data-rowId="' + cart.rowId + '"]');
+
+            if (cartHover_existItem.length) {
+                cartHover_existItem.find('.product-selected p').text(cart.price + ' 000₫' + ' x ' + cart.qty);
+            } else {
+                var newItem =
+                    '<tr data-rowId="' + cart.rowId + '">\n' +
+                    '    <td class="si-pic"><img src="/front/img/products/' + cart.options.images[0].path + '" alt=""></td>\n' +
+                    '    <td class="si-text">\n' +
+                    '        <div class="product-selected">\n' +
+                    '            <p>' + cart.price + ' 000₫ x ' + cart.qty + '</p>\n' +
+                    '            <h6>' + cart.name + '</h6>\n' +
+                    '        </div>\n' +
+                    '    </td>\n' +
+                    '    <td class="si-close">\n' +
+                    '        <i class="ti-close" onclick="window.location=\'./cart/delete/' + cart.rowId + '\'"></i>\n' +
+                    '    </td>\n' +
+                    '</tr>'
+
+                cartHover_tbody.append(newItem);
+            }
+        })
+        .fail(() => {
+            alert('Lỗi, hãy thử lại.');
+        })
+}
+
+function updateCart(rowId, qty) {
+    $.ajax({
+        type: "GET",
+        url: "cart/update?" + $.param({'rowId': rowId, 'qty': qty})
+    })
+        .done((response) => {
+            // $('.cart-count').text(response['count']);
+            $('.select-total h5').text(response['total'] + ' 000₫');
+            $('.cart-price').text(response['total'] + ' 000₫');
+
+            // console.log(response);
+            var cart = response['cart'];
+
+            // Xử lý ở cart-hover
+            var cartHover_tbody = $('.select-items tbody');
+            var cartHover_existItem = cartHover_tbody.find('tr[data-rowId="' + rowId + '"]');
+
+            cartHover_existItem.find('.product-selected p').text(cart.price + ' 000₫' + ' x ' + cart.qty);
+
+            // Xử lý trong trang shop/cart
+
+            $('.cart-total span').text(response['total'] + ' 000₫');
+
+            var cart_tbody = $('.cart-table tbody');
+            var cart_existItem = cart_tbody.find('tr[data-rowId="' + rowId + '"]');
+
+            cart_existItem.find('.total-price').text(formatNumber(cart.price * cart.qty) + ' 000₫');
+            cart_existItem.find('.pro-qty input').val(cart.qty);
+        })
+        .fail(() => {
+            alert('Lỗi, hãy thử lại!');
+        })
+}
+
+function deleteCart(rowId) {
+    $.ajax({
+        type: 'GET',
+        url: 'cart/delete?' + $.param({rowId: rowId})
+    })
+        .done((response) => {
+            $('.cart-count').text(response['count']);
+            $('.select-total h5').text(response['total'] + ' 000₫');
+            $('.cart-price').text(response['total'] + ' 000₫');
+
+            // console.log(response);
+            var cart = response['cart'];
+
+            // Xử lý ở cart-hover
+            var cartHover_tbody = $('.select-items tbody');
+            var cartHover_existItem = cartHover_tbody.find('tr[data-rowId="' + rowId + '"]');
+
+            cartHover_existItem.remove();
+
+            // Xử lý trong trang shop/cart
+            $('.cart-total span').text(response['total'] + ' 000₫');
+
+            var cart_tbody = $('.cart-table tbody');
+            var cart_existItem = cart_tbody.find('tr[data-rowId="' + rowId + '"]');
+
+            cart_existItem.remove();
+        })
+        .fail(() => {
+            alert('Lỗi, hãy thử lại.')
+        })
+}
+
+function formatNumber(x) {
+    return x.toLocaleString().replace(',', ' ');
+}

@@ -23,8 +23,6 @@ class CheckOutController extends Controller
 
     public function addOrder(Request $request)
     {
-
-
 //        Thêm đơn hàng
         $order = Order::create($request->all());
 
