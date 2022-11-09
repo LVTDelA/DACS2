@@ -31,14 +31,17 @@
                         <!-- form create address-->
                         <div class="col-lg-6">
                             <div class="checkout-content">
-                                <a href="./login.html" class="login-btn-checkout">Bấm vào đây để đăng nhập</a>
+                                <a href="./account/login" class="login-btn-checkout">Bấm vào đây để đăng nhập</a>
                             </div>
                             <!-- Detail bills -->
                             <h4>Chi tiết hóa đơn</h4>
                             <div class="row">
+
+                                <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id ?? ''}}">
+
                                 <div class="col-lg-6">
                                     <label for="fir">Họ <span>*</span></label>
-                                    <input type="text" id="fir" name="first_name">
+                                    <input type="text" id="fir" name="first_name" value="{{Auth::user()->name ?? ''}}">
                                 </div>
 
                                 <div class="col-lg-6">
@@ -53,12 +56,12 @@
 
                                 <div class="col-lg-12">
                                     <label for="cun">Đất nước <span>*</span></label>
-                                    <input type="text" id="cun" name="country">
+                                    <input type="text" id="cun" name="country" value="{{Auth::user()->country ?? ''}}">
                                 </div>
 
                                 <div class="col-lg-12">
                                     <label for="street">Địa chỉ <span>*</span></label>
-                                    <input type="text" id="street" class="street-first" name="street_address">
+                                    <input type="text" id="street" class="street-first" name="street_address" value="{{Auth::user()->street_address ?? ''}}">
                                 </div>
 
                                 {{--                            <div class="col-lg-12">--}}
@@ -73,12 +76,12 @@
 
                                 <div class="col-lg-6">
                                     <label for="email">Email</label>
-                                    <input type="text" id="email" name="email">
+                                    <input type="text" id="email" name="email" value="{{Auth::user()->email ?? ''}}">
                                 </div>
 
                                 <div class="col-lg-6">
                                     <label for="phone">Điện thoại</label>
-                                    <input type="text" id="phone" name="phone_number">
+                                    <input type="text" id="phone" name="phone_number" value="{{Auth::user()->phone ?? ''}}">
                                 </div>
                                 <!-- create account -->
                                 <div class="col-lg-12">

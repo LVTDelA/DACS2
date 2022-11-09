@@ -50,4 +50,5 @@ Route::prefix('account')->group(function () {
     Route::get('logout', [Front\AccountController::class, 'logout']);
 
     Route::get('register', [Front\AccountController::class, 'register']);
+    Route::post('register', [Front\AccountController::class, 'postRegister']);
 });
