@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [Front\HomeController::class, 'index']);
+//Route::get('/', function (\App\Service\CoffeeProduct\CoffeeProductServiceInterface $coffeeProductService) {
+//    return $coffeeProductService->all();
+//});
 
 Route::prefix('shop')->group(function() {
     Route::get('/product/{id}', [Front\ShopController::class, 'show']);
@@ -38,4 +41,13 @@ Route::prefix('checkout')->group(function () {
 
     Route::get('/vnPayCheck', [Front\CheckOutController::class, 'vnPayCheck']);
     Route::get('result', [Front\CheckOutController::class, 'result']);
+});
+
+Route::prefix('account')->group(function () {
+    Route::get('login', [Front\AccountController::class, 'login']);
+    Route::post('login', [Front\AccountController::class, 'checkLogin']);
+
+    Route::get('logout', [Front\AccountController::class, 'logout']);
+
+    Route::get('register', [Front\AccountController::class, 'register']);
 });

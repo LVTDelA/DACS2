@@ -46,9 +46,17 @@
                 </div>
             </div>
             <div class="ht-right">
-                <a href="login.html" class="login-panel">
+
+                @if(Auth::check())
+                    <a href="./account/logout" class="login-panel">
+                        <i class="fa fa-user"></i>
+                        {{Auth::user()->name}} - Logout
+                    </a>
+                @else
+                <a href="./account/login" class="login-panel">
                     <i class="fa fa-user"> Đăng Nhập</i>
                 </a>
+                @endif
 
                 <div class="top-social">
                     <a href="#"><i class="ti-facebook"></i></a>
@@ -168,7 +176,7 @@
                             <li><a href="check-out.html">Thanh toán</a></li>
                             <li><a href="faq.html">Câu hỏi thường gặp</a></li>
                             <li><a href="register.html">Đăng kí</a></li>
-                            <li><a href="login.html">Đăng nhập</a></li>
+                            <li><a href="./account/login">Đăng nhập</a></li>
                         </ul>
 
                     </li>

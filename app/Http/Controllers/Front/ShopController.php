@@ -6,17 +6,25 @@ use App\Http\Controllers\Controller;
 use App\Models\CoffeeBrand;
 use App\Models\CoffeeCategory;
 use App\Models\CoffeeProduct;
+use App\Service\CoffeeProduct\CoffeeProductServiceInterface;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
+    private $CoffeeProductService;
+
+    public function __construct(CoffeeProductServiceInterface $coffeeProductService)
+    {
+        $this->CoffeeProductService = $coffeeProductService;
+    }
+
     //
     public function show($id)
     {
         $categories = CoffeeCategory::all();
         $brands = CoffeeBrand::all();
 
-        $product = CoffeeProduct::findOrfail($id);
+        $product = $this->CoffeeProductService->find($id);
 
         $relatedProducts = CoffeeProduct::
         where('id_coffee_category', $product->id_coffee_category)

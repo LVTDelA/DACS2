@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Repositories\CoffeeProduct\CoffeeProductRepository;
+use App\Repositories\CoffeeProduct\CoffeeProductRepositoryInterface;
+use App\Service\CoffeeProduct\CoffeeProductService;
+use App\Service\CoffeeProduct\CoffeeProductServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +17,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //CoffeeProduct
+        $this->app->singleton(
+            CoffeeProductRepositoryInterface::class,
+            CoffeeProductRepository::class
+        );
+
+        $this->app->singleton(
+            CoffeeProductServiceInterface::class,
+            CoffeeProductService::class
+        );
     }
 
     /**
