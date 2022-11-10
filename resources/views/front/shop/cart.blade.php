@@ -51,7 +51,7 @@
                             @foreach($carts as $cart)
                                 <tr data-rowId="{{$cart->rowId}}">
                                     <td class="cart-pic first-row">
-                                        <img src="front/img/products/{{$cart->options->images[0]->path}}" alt="">
+                                        <img style="height: 10rem" src="front/img/products/{{$cart->options->images[0]->path}}" alt="">
                                     </td>
                                     <td class="cart-title first-row">
                                         <h5>{{$cart->name}}</h5>
@@ -77,16 +77,9 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">Tiếp tục mua</a>
-                                <a href="#" class="primary-btn up-cart">Cập nhật giỏ hàng</a>
+                                <a href="./shop" class="primary-btn continue-shop">Tiếp tục mua</a>
+{{--                                <a href="#" class="primary-btn up-cart">Cập nhật giỏ hàng</a>--}}
                             </div>
-                            {{--                            <div class="discount-coupon">--}}
-                            {{--                                <h6>Mã giảm giá</h6>--}}
-                            {{--                                <form action="#" class="coupon-form">--}}
-                            {{--                                    <input type="text" placeholder="Nhập mã giảm giá">--}}
-                            {{--                                    <button type="submit" class="site-btn coupon-btn">Áp dụng</button>--}}
-                            {{--                                </form>--}}
-                            {{--                            </div>--}}
                         </div>
                         <div class="col-lg-4 offset-lg-4">
                             <div class="proceed-checkout">

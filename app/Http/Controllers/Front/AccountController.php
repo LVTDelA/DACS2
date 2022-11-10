@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Service\User\UserServiceInterface;
+use App\Utilities\Constant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,11 +57,17 @@ class AccountController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'level' => 2, //Khách hàng bình thường
+            'level' => Constant::user_level_client, //Khách hàng bình thường
         ];
 
         $this->userService->create($data);
 
         return redirect('account/login')->with('notification', 'Đăng ký thành công, hãy đăng nhập lại.');
+    }
+
+    public function myOrderIndex() {
+        $orders = Order::where('user_id', Auth::id())->get();
+//        dd($orders[0]->orderDetails[0]->coffeeProduct->coffeeImages[0]->path);
+        return view('front.account.my-order.index', compact('orders'));
     }
 }

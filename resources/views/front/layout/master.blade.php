@@ -172,10 +172,11 @@
                     </li>
                     <li><a href="#">Xem thêm</a>
                         <ul class="dropdown">
-                            <li><a href="shopping-cart.html">Giỏ hàng</a></li>
-                            <li><a href="check-out.html">Thanh toán</a></li>
+                            <li><a href="./account/my-order">Đơn hàng của tôi</a></li>
+                            <li><a href="./cart">Giỏ hàng</a></li>
+                            <li><a href="./checkout">Thanh toán</a></li>
                             <li><a href="faq.html">Câu hỏi thường gặp</a></li>
-                            <li><a href="register.html">Đăng kí</a></li>
+                            <li><a href="./account/register">Đăng kí</a></li>
                             <li><a href="./account/login">Đăng nhập</a></li>
                         </ul>
 

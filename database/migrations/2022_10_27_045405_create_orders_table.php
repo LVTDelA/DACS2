@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
 
             $table->integer('user_id')->nullable();
-            $table->string("first_name");
-            $table->string("last_name");
+            $table->string("first_name")->nullable();
+            $table->string("last_name")->nullable();
             $table->string("country");
             $table->string("street_address");
-            $table->string("email");
+            $table->string("email")->nullable();
             $table->string("phone_number");
             $table->string('payment_type');
             $table->integer('status');

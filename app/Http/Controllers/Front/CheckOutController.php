@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Utilities\Constant;
 use App\Utilities\VNPay;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -24,7 +25,9 @@ class CheckOutController extends Controller
     public function addOrder(Request $request)
     {
 //        Thêm đơn hàng
-        $order = Order::create($request->all());
+        $data = $request->all();
+        $data['status'] = Constant::order_status_ReceiveOrder;
+        $order = Order::create($data);
 
 //        Thêm CT đơn hàng
         $carts = Cart::content();
@@ -71,6 +74,8 @@ class CheckOutController extends Controller
 //        Kiểm tra data
         if ($vnp_ResponseCode != null) {
             if ($vnp_ResponseCode == 00) {
+//                Cập nhật trạng thái đơn hàng
+                Order::find($vnp_TxnRef)->update(['status' => Constant::order_status_Paid]);
 //                Gửi mail
                 $order = Order::find($vnp_TxnRef);
                 $total = $vnp_Amount;
