@@ -28,7 +28,7 @@
                         <h2>Đăng kí</h2>
 
                         @if(session('notification'))
-                            <div class="aler alert-warning" role="alert">
+                            <div class="alert alert-warning" role="alert">
                                 {{session('notification')}}
                             </div>
                         @endif

@@ -52,7 +52,7 @@ Route::prefix('account')->group(function () {
     Route::get('register', [Front\AccountController::class, 'register']);
     Route::post('register', [Front\AccountController::class, 'postRegister']);
 
-    Route::prefix('my-order')->group(function () {
+    Route::prefix('my-order')->middleware('CheckMemberLogin')->group(function () {
         Route::get('/', [Front\AccountController::class, 'myOrderIndex']);
         Route::get('/{id}', [Front\AccountController::class, 'myOrderShow']);
     });

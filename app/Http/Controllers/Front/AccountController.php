@@ -32,7 +32,7 @@ class AccountController extends Controller
         $remember = $request->remember;
 
         if (Auth::attempt($credentials, $remember)) {
-            return redirect('/');
+            return redirect()->intended(); // Trả về trang trước khi Middleware bắt lại
         } else {
             return back()->with('notification', 'Lỗi! Email hoặc mật khẩu không chính xác.');
         };
