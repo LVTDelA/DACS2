@@ -54,5 +54,6 @@ Route::prefix('account')->group(function () {
 
     Route::prefix('my-order')->group(function () {
         Route::get('/', [Front\AccountController::class, 'myOrderIndex']);
+        Route::get('/{id}', [Front\AccountController::class, 'myOrderShow']);
     });
 });

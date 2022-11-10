@@ -66,8 +66,13 @@ class AccountController extends Controller
     }
 
     public function myOrderIndex() {
-        $orders = Order::where('user_id', Auth::id())->get();
-//        dd($orders[0]->orderDetails[0]->coffeeProduct->coffeeImages[0]->path);
+        $orders = Order::where('user_id', Auth::id())->orderBy('id', 'desc')->get();
+
         return view('front.account.my-order.index', compact('orders'));
+    }
+    public function myOrderShow($id) {
+        $order = Order::find($id);
+
+        return view('front.account.my-order.show', compact('order'));
     }
 }

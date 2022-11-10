@@ -30,9 +30,9 @@
                     @if(Cart::count() > 0)
                         <!-- form create address-->
                         <div class="col-lg-6">
-                            <div class="checkout-content">
-                                <a href="./account/login" class="login-btn-checkout">Bấm vào đây để đăng nhập</a>
-                            </div>
+{{--                            <div class="checkout-content">--}}
+{{--                                <a href="./account/login" class="login-btn-checkout">Bấm vào đây để đăng nhập</a>--}}
+{{--                            </div>--}}
                             <!-- Detail bills -->
                             <h4>Chi tiết hóa đơn</h4>
                             <div class="row">
@@ -99,9 +99,9 @@
                             <!-- END Detail Bill -->
                         </div>
                         <div class="col-lg-6">
-                            <div class="checkout-content">
-                                <input type="text" placeholder="Nhập mã giảm giá">
-                            </div>
+{{--                            <div class="checkout-content">--}}
+{{--                                <input type="text" placeholder="Nhập mã giảm giá">--}}
+{{--                            </div>--}}
                             <div class="place-order">
                                 <h4>Đơn hàng của bạn</h4>
                                 <div class="order-total">
@@ -113,6 +113,7 @@
                                                 {{$cart->name}} x {{$cart->qty}}
                                                 <span>{{number_format($cart->price * $cart->qty, 0, '.', ' ')}} 000đ</span></li>
                                         @endforeach
+
                                         <li class="total-price">Total <span>{{$total}} 000đ</span></li>
                                     </ul>
                                     <div class="payment-check">

@@ -52,14 +52,14 @@
                                                 alt="">
                                         </td>
                                         <td class="first-row">
-                                            <h5>#{{$order->id}}</h5>
+                                            <h5><b>#{{$order->id}}</b></h5>
                                         </td>
                                         <td class="cart-title first-row">
                                             <h5>
                                                 {{$order->orderDetails[0]->coffeeProduct->name}}
 
                                                 @if(count($order->orderDetails) > 1)
-                                                    <i>và {{count($order->orderDetails)}} sản phẩm khác</i>
+                                                    <b>và {{count($order->orderDetails) - 1}} sản phẩm khác</b>
                                                 @endif
                                             </h5>
                                         </td>
@@ -67,7 +67,7 @@
                                             {{number_format(array_sum(array_column($order->orderDetails->toArray(), 'total')), 0, '.', ' ')}} 000₫
                                         </td>
                                         <td class="first-row">
-                                            <a class="btn" href="./account/my-order/{{$order->id}}">Detail</a>
+                                            <a class="btn" href="./account/my-order/{{$order->id}}"><i><b>Chi tiết</b></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
