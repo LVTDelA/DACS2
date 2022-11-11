@@ -19,6 +19,9 @@ Route::get('/', [Front\HomeController::class, 'index']);
 //    return $coffeeProductService->all();
 //});
 
+
+//User
+
 Route::prefix('shop')->group(function() {
     Route::get('/product/{id}', [Front\ShopController::class, 'show']);
 
@@ -56,4 +59,13 @@ Route::prefix('account')->group(function () {
         Route::get('/', [Front\AccountController::class, 'myOrderIndex']);
         Route::get('/{id}', [Front\AccountController::class, 'myOrderShow']);
     });
+});
+
+
+// Admin
+
+Route::prefix('admin')->group(function (){
+
+   Route::resource('user',\App\Http\Controllers\Admin\UserController::class);
+
 });
