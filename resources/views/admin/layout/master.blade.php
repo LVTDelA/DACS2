@@ -1,3 +1,7 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -554,7 +558,7 @@
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg"
+                                            <img width="42" class="rounded-circle" src="admin/assets/images/avatars/{{$user->avatar}}"
                                                 alt="">
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
@@ -570,15 +574,17 @@
                                                             <div class="widget-content-wrapper">
                                                                 <div class="widget-content-left mr-3">
                                                                     <img width="42" class="rounded-circle"
-                                                                        src="assets/images/avatars/1.jpg" alt="">
+                                                                        src="admin/assets/images/avatars/{{$user->avatar}}" alt="">
                                                                 </div>
                                                                 <div class="widget-content-left">
-                                                                    <div class="widget-heading">Trần Quang</div>
-                                                                    <div class="widget-subheading opacity-8">Profile của trần quang</div>
+                                                                    <div class="widget-heading">{{Auth::user()->name ?? ''}}</div>
+                                                                    <div class="widget-subheading opacity-8">{{Auth::user()->email ?? ''}}</div>
                                                                 </div>
                                                                 <div class="widget-content-right mr-2">
-                                                                    <button
-                                                                        class="btn-pill btn-shadow btn-shine btn btn-focus">Đăng xuất</button>
+                                                                    <a href="./admin/logout" class="btn-pill btn-shadow btn-shine btn btn-focus">
+                                                                        Đăng xuất
+                                                                    </a>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -756,5 +762,10 @@
 @yield('body')
 {{-- End Main --}}
             </div>
+    <script src="./admin/assets/scripts/jquery-3.2.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="./admin//assets/scripts/main.js"></script>
+    <script type="text/javascript" src="./admin//assets/scripts/my_script.js"></script>
         </div>
     </div>

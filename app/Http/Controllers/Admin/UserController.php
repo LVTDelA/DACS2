@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Service\User\UserServiceInterface;
-
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Utilities\Common;
 
 class UserController extends Controller 
 {
@@ -58,7 +58,7 @@ class UserController extends Controller
 
         // Xu li file:
         if ($request->hasFile('image')) {
-            $data['avatar'] = Common::uploadFile($request->file('image'),'front/img/user');
+            $data['avatar'] = Common::uploadFile($request->file('image'),'./admin/assets/images/avatars');
         }
         
         $user = $this->userService->create($data);
@@ -98,7 +98,35 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data = $request -> all();
+
+        // Xu li password
+        if ($request->get('password') != null) {
+            if ($request->get('password')!= $request->get('password_confirmation')) {
+                return back()
+                ->with('notification','Error: Confirm password does not match');
+            }
+        
+        $data['password'] = bcrypt($request->get('password'));
+    }else {
+        unset($data['password']);
+    }
+
+    // Xu li file anh
+        if ($request->hasFile('image')) {
+            //them file new
+            $data['avatar'] = Common::uploadFile($request->file('images'),'admin/assets/images/avatars');
+            // Xoa file cu:
+            $file_name_old = $request->get('image_old');
+            if ($file_name_old != '') {
+                unlink('admin/assets/images/avatars' .file_name_old);
+            }
+        }
+   
+    // Update Data
+    $this->userService->update($data,$user->id);
+
+    return redirect('admin/user/' .$user->id);
     }
 
     /**
@@ -109,6 +137,14 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+       $this->userService->delete($user->id);
+
+    //    Delete files:
+            $file_name = $user->avatar ;
+            if ($file_name != '') {
+                unlink('admin/assets/images/avatars/' .$file_name);
     }
+
+    return redirect('admin/user');
+   }
 }

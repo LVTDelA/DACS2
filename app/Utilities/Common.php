@@ -5,6 +5,9 @@ namespace App\Utilities;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
+
+//  cau hinh xu ly uploads file anh
+
 class Common
 {
     public static function uploadFile($file, $path)

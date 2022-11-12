@@ -256,7 +256,7 @@
 <!-- footer end -->
 
 <!-- tailwind CSS -->
-{{--    <script src="https://cdn.tailwindcss.com"></script>--}}
+   {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 
 <!-- Js Plugins -->
 <script src="front/js/jquery-3.3.1.min.js"></script>

@@ -81,7 +81,7 @@
                         <img width="40" class="rounded-circle"
                             data-toggle="tooltip" title="Image"
                             data-placement="bottom"
-                            src="front/img/user/{{$user -> avatar ?? 'default-avatar.jpg'}}" alt="">
+                            src="admin/assets/images/avatars/{{$user->avatar}}" alt="">
                     </div>
                 </div>
                 <div class="widget-content-left flex2">
@@ -105,7 +105,9 @@
                 <i class="fa fa-edit fa-w-20"></i>
             </span>
         </a>
-        <form class="d-inline" action="" method="post">
+        <form class="d-inline" action="./admin/user/{{$user->id}}" method="post">
+            @csrf
+            @method('DELETE')
             <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
                 type="submit" data-toggle="tooltip" title="Delete"
                 data-placement="bottom"

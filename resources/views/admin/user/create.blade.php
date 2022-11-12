@@ -39,7 +39,7 @@
                                                 <img style="height: 200px; cursor: pointer;"
                                                     class="thumbnail rounded-circle" data-toggle="tooltip"
                                                     title="Click to change the image" data-placement="bottom"
-                                                    src="./admin/assets/images/add-image-icon.jpg" alt="Avatar">
+                                                    src="admin/assets/images/add-image-icon.jpg" alt="Avatar">
                                                 <input name="image" type="file" onchange="changeImg(this)"
                                                     class="image form-control-file" style="display: none;" value="">
                                                 <input type="hidden" name="image_old" value="">
