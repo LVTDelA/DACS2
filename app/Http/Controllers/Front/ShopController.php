@@ -6,30 +6,39 @@ use App\Http\Controllers\Controller;
 use App\Models\CoffeeBrand;
 use App\Models\CoffeeCategory;
 use App\Models\CoffeeProduct;
+use App\Service\Brand\BrandServiceInterface;
 use App\Service\CoffeeProduct\CoffeeProductServiceInterface;
+use App\Service\ProductCategory\ProductCategoryServiceInterface;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
-    private $CoffeeProductService;
+    private $productService;
+    private $productCategoryService;
+    private $brandService;
 
-    public function __construct(CoffeeProductServiceInterface $coffeeProductService)
+    public function __construct(CoffeeProductServiceInterface   $coffeeProductService,
+                                ProductCategoryServiceInterface $productCategoryService,
+                                BrandServiceInterface           $brandService)
     {
-        $this->CoffeeProductService = $coffeeProductService;
+        $this->productService = $coffeeProductService;
+        $this->productCategoryService = $productCategoryService;
+        $this->brandService = $brandService;
     }
 
     //
     public function show($id)
     {
-        $categories = CoffeeCategory::all();
-        $brands = CoffeeBrand::all();
+        $categories = $this->productCategoryService->all();
+        $brands = $this->brandService->all();
 
-        $product = $this->CoffeeProductService->find($id);
+        $product = $this->productService->find($id);
 
-        $relatedProducts = CoffeeProduct::
-        where('id_coffee_category', $product->id_coffee_category)
-            ->limit(4)
-            ->get();
+//        $relatedProducts = CoffeeProduct::
+//        where('id_coffee_category', $product->id_coffee_category)
+//            ->limit(4)
+//            ->get();
+        $relatedProducts = $this->productService->getRelatedProducts($product);
 
 //        dd($product);
         return view('front.shop.show', compact('categories', 'brands', 'product', 'relatedProducts'));
@@ -37,17 +46,18 @@ class ShopController extends Controller
 
     public function index(Request $request)
     {
-        $categories = CoffeeCategory::all();
-        $brands = CoffeeBrand::all();
+        $categories = $this->productCategoryService->all();
+        $brands = $this->brandService->all();
 
         $perPage = $request->show ?? 3;
         $sortBy = $request->sort_by ?? 'latest';
         $search = $request->search ?? '';
 
-        $products = CoffeeProduct::where('name', 'like', '%' . $search . '%');
-
-        $products = $this->filter($products, $request);
-        $products = $this->sortAndPagination($products, $sortBy, $perPage);
+//        $products = CoffeeProduct::where('name', 'like', '%' . $search . '%');
+//
+//        $products = $this->filter($products, $request);
+//        $products = $this->sortAndPagination($products, $sortBy, $perPage);
+        $products = $this->productService->getProductOnIndex($request);
 
 
 //        dd($products->links());
@@ -56,68 +66,18 @@ class ShopController extends Controller
 
     public function category($categoryName, Request $request)
     {
-        $categories = CoffeeCategory::all();
-        $brands = CoffeeBrand::all();
+        $categories = $this->productCategoryService->all();
+        $brands = $this->brandService->all();
 
         $perPage = $request->show ?? 3;
         $sortBy = $request->sort_by ?? 'latest';
 
-        $products = CoffeeCategory::where('name', $categoryName)->first()->CoffeeProducts->toQuery();
+//        $products = $this->productCategoryService->where('name', $categoryName)->first()->CoffeeProducts->toQuery();
+        $products = $this->productService->getProductsByCategory($categoryName, $request);
 
-        $products = $this->filter($products, $request);
-        $products = $this->sortAndPagination($products, $sortBy, $perPage);
+//        $products = $this->filter($products, $request);
+//        $products = $this->sortAndPagination($products, $sortBy, $perPage);
 
         return view('front.shop.index', compact('categories', 'brands', 'products'));
-    }
-
-    private function sortAndPagination($products, $sortBy, $perPage)
-    {
-        switch ($sortBy) {
-            case 'latest':
-                $products = $products->orderBy('id');
-                break;
-            case 'oldest':
-                $products = $products->orderByDesc('id');
-                break;
-            case 'name-ascending':
-                $products = $products->orderBy('name');
-                break;
-            case 'name-descending':
-                $products = $products->orderByDesc('name');
-                break;
-            case 'price-ascending':
-                $products = $products->orderBy('price');
-                break;
-            case 'price-descending':
-                $products = $products->orderByDesc('price');
-                break;
-            default:
-                $products = $products->orderBy('id');
-        }
-
-        $products = $products->paginate($perPage);
-
-//        Thêm query trên URL khi sang trang. Cách 1 hoặc 2
-//        1. Thêm query chi tiết
-//        $products->appends(['sort_by' => $sortBy, 'show' => $perPage]);
-//        2.Thêm tất cả query hiện có trên URL
-        $products->withQueryString();
-
-        return $products;
-    }
-
-    private function filter($products, Request $request)
-    {
-        $brand_ids = array_keys($request->brand ?? []);
-
-        if ($brand_ids != null) $products = $products->whereIn('id_coffee_brand', $brand_ids);
-
-
-        $priceMin = str_replace(' 000₫', '', $request->price_min);
-        $priceMax = str_replace(' 000₫', '', $request->price_max);
-
-        if ($priceMin != null && $priceMax != null) $products->whereBetween('price', [$priceMin, $priceMax]);
-
-        return $products;
     }
 }
