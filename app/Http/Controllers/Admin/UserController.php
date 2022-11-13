@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Utilities\Common;
 
-class UserController extends Controller 
+class UserController extends Controller
 {
     private $userService;
 
@@ -21,9 +21,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->userService->all();
+        $users = $this->userService->searchAndPaginate('name', $request->get('search'));
 
         return view('admin.user.index',compact('users'));
     }
@@ -45,7 +45,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    // Cau hinh hien thi thong bao loi o views  
+    // Cau hinh hien thi thong bao loi o views
     {
         if ($request->get('password') != $request->get('password_confirmation')) {
             return back()
@@ -57,10 +57,11 @@ class UserController extends Controller
 
 
         // Xu li file:
-        if ($request->hasFile('image')) {
+
+        if ($request->hasFile('image')){
             $data['avatar'] = Common::uploadFile($request->file('image'),'./admin/assets/images/avatars');
         }
-        
+
         $user = $this->userService->create($data);
 
         return redirect('admin/user/'.$user->id);
@@ -106,23 +107,23 @@ class UserController extends Controller
                 return back()
                 ->with('notification','Error: Confirm password does not match');
             }
-        
+
         $data['password'] = bcrypt($request->get('password'));
     }else {
         unset($data['password']);
     }
 
     // Xu li file anh
-        if ($request->hasFile('image')) {
-            //them file new
-            $data['avatar'] = Common::uploadFile($request->file('images'),'admin/assets/images/avatars');
-            // Xoa file cu:
+        if ($request->hasFile('image')){
+            //add new img
+            $data['avatar'] = Common::uploadFile($request->file('image'),'admin/assets/images/avatars' );
+            //xoa file cu
             $file_name_old = $request->get('image_old');
-            if ($file_name_old != '') {
-                unlink('admin/assets/images/avatars' .file_name_old);
+            if ($file_name_old != ''){
+                unlink('admin/assets/images/avatars/' .$file_name_old);
             }
         }
-   
+
     // Update Data
     $this->userService->update($data,$user->id);
 

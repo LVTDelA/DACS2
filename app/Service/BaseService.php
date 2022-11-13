@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use App\Repositories\User\UserRepositoryInterface;
+
 class BaseService implements ServiceInterface
 {
     public $repository;
@@ -29,5 +31,10 @@ class BaseService implements ServiceInterface
     public function delete($id)
     {
         return $this->repository->delete($id);
+    }
+
+    public function searchAndPaginate($searchBy,$keyword,$perPage = 5)
+    {
+        return $this->repository->searchAndPaginate($searchBy,$keyword,$perPage);
     }
 }

@@ -167,9 +167,9 @@ use Illuminate\Support\Facades\Auth;
                                 <div class="dropdown-menu-header">
                                     <div class="dropdown-menu-header-inner bg-secondary">
                                         <div class="menu-header-image opacity-5"
-                                            style="background-image: url('assets/images/dropdown-header/abstract2.jpg');">
+                                            style="background-image: url('./assets/images/dropdown-header/abstract2.jpg');">
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="scroll-area-xs">
@@ -190,7 +190,7 @@ use Illuminate\Support\Facades\Auth;
                                 </ul>
                             </div>
                         </li>
-                    
+
                     </ul>
                 </div>
                 <div class="app-header-right">
@@ -382,7 +382,7 @@ use Illuminate\Support\Facades\Auth;
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                    
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -405,7 +405,7 @@ use Illuminate\Support\Facades\Auth;
                                                                 <div
                                                                     class="vertical-timeline-element-content bounce-in">
                                                                     <h4 class="timeline-title">Các cuộc gặp mặt</h4>
-                                                                    <p>Được diễn ra vào 
+                                                                    <p>Được diễn ra vào
                                                                         <a href="javascript:void(0);">12:00 PM</a>
                                                                     </p>
                                                                     <span class="vertical-timeline-element-date"></span>
@@ -460,7 +460,7 @@ use Illuminate\Support\Facades\Auth;
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -558,7 +558,7 @@ use Illuminate\Support\Facades\Auth;
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="admin/assets/images/avatars/{{$user->avatar}}"
+                                            <img width="42" class="rounded-circle" src="front/img/user/{{Auth::user()->avatar ?? 'default-avatar.jpg'}}"
                                                 alt="">
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
@@ -567,14 +567,14 @@ use Illuminate\Support\Facades\Auth;
                                             <div class="dropdown-menu-header">
                                                 <div class="dropdown-menu-header-inner bg-info">
                                                     <div class="menu-header-image opacity-2"
-                                                        style="background-image: url('assets/images/dropdown-header/city3.jpg');">
+                                                        style="background-image: url('./admin/assets/images/dropdown-header/city3.jpg');">
                                                     </div>
                                                     <div class="menu-header-content text-left">
                                                         <div class="widget-content p-0">
                                                             <div class="widget-content-wrapper">
                                                                 <div class="widget-content-left mr-3">
                                                                     <img width="42" class="rounded-circle"
-                                                                        src="admin/assets/images/avatars/{{$user->avatar}}" alt="">
+                                                                        src="front/img/user/{{Auth::user()->avatar ?? 'default-avatar.jpg'}}" alt="">
                                                                 </div>
                                                                 <div class="widget-content-left">
                                                                     <div class="widget-heading">{{Auth::user()->name ?? ''}}</div>
@@ -584,7 +584,7 @@ use Illuminate\Support\Facades\Auth;
                                                                     <a href="./admin/logout" class="btn-pill btn-shadow btn-shine btn btn-focus">
                                                                         Đăng xuất
                                                                     </a>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -720,32 +720,32 @@ use Illuminate\Support\Facades\Auth;
 
                             <li class="mm-active">
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-plugin"></i>Quản lý 
+                                    <i class="metismenu-icon pe-7s-plugin"></i>Quản lý
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="./admin/user" class="mm-active">
+                                        <a href="./admin/user" class="{{ (request()->segment(2) == 'user') ? 'mm-active' : '' }}" >
                                             <i class="metismenu-icon"></i>Người dùng
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="./admin/order">
+                                        <a href="./admin/order" class="{{ (request()->segment(2) == 'order') ? 'mm-active' : '' }}">
                                             <i class="metismenu-icon"></i>Đơn hàng
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="./admin/product">
+                                        <a href="./admin/product" class="{{ (request()->segment(2) == 'product') ? 'mm-active' : '' }}">
                                             <i class="metismenu-icon"></i>Sản phẩm
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="./admin/category">
+                                        <a href="./admin/category" class="{{ (request()->segment(2) == 'category') ? 'mm-active' : '' }}">
                                             <i class="metismenu-icon"></i>Thể loại
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="./admin/brand">
+                                        <a href="./admin/brand" class="{{ (request()->segment(2) == 'brand') ? 'mm-active' : '' }}">
                                             <i class="metismenu-icon"></i>Blog
                                         </a>
                                     </li>
