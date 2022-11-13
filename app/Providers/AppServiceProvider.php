@@ -4,10 +4,14 @@ namespace App\Providers;
 
 use App\Repositories\CoffeeProduct\CoffeeProductRepositoryInterface;
 use App\Repositories\CoffeeProduct\CoffeeProductRepository;
+use App\Repositories\ProductCategory\ProductCategoryRepository;
+use App\Repositories\ProductCategory\ProductCategoryRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\User\UserRepository;
 use App\Service\CoffeeProduct\CoffeeProductService;
 use App\Service\CoffeeProduct\CoffeeProductServiceInterface;
+use App\Service\ProductCategory\ProductCategoryService;
+use App\Service\ProductCategory\ProductCategoryServiceInterface;
 use App\Service\User\UserService;
 use App\Service\User\UserServiceInterface;
 use Illuminate\Support\ServiceProvider;
@@ -36,11 +40,19 @@ class AppServiceProvider extends ServiceProvider
             UserRepositoryInterface::class,
             UserRepository::class
         );
-
-
         $this->app->singleton(
             UserServiceInterface::class,
             UserService::class
+        );
+
+        //Coffee category
+        $this->app->singleton(
+            ProductCategoryRepositoryInterface::class,
+            ProductCategoryRepository::class
+        );
+        $this->app->singleton(
+            ProductCategoryServiceInterface::class,
+            ProductCategoryService::class
         );
     }
 

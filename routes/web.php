@@ -67,7 +67,7 @@ Route::prefix('account')->group(function () {
 Route::prefix('admin')->middleware('CheckAdminLogin')->group(function (){
 
    Route::resource('user',\App\Http\Controllers\Admin\UserController::class);
-   Route::resource('category',\App\Http\Controllers\Admin\ProductCategoryController::class);
+   Route::resource('category', \App\Http\Controllers\Admin\ProductCategoryController::class);
 
    Route::prefix('login')->group(function (){
       Route::get('',[App\Http\Controllers\Admin\HomeController::class, 'getLogin'])->withoutMiddleware('CheckAdminLogin');
