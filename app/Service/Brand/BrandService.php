@@ -9,9 +9,9 @@ class BrandService extends BaseService implements BrandServiceInterface
 {
     public $repository;
 
-    public function __construct(BrandRepositoryInterface $categoryRepository)
+    public function __construct(BrandRepositoryInterface $brandRepository)
     {
-        $this->repository = $categoryRepository;
+        $this->repository = $brandRepository;
     }
 
     public function getLatestBrands($limit = 3)
