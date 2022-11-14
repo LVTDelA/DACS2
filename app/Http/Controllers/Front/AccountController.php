@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
-    private $userService;
+    private UserServiceInterface $userService;
 
     public function __construct(UserServiceInterface $userService)
     {

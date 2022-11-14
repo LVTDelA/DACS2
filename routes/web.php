@@ -70,7 +70,7 @@ Route::prefix('admin')->middleware('CheckAdminLogin')->group(function (){
    Route::resource('category', \App\Http\Controllers\Admin\ProductCategoryController::class);
    Route::resource('brand',\App\Http\Controllers\Admin\BrandController::class);
 
-   Route::prefix('login')->group(function (){
+   Route::prefix('login')->group(function () {
       Route::get('',[App\Http\Controllers\Admin\HomeController::class, 'getLogin'])->withoutMiddleware('CheckAdminLogin');
       Route::post('',[App\Http\Controllers\Admin\HomeController::class, 'postLogin'])->withoutMiddleware('CheckAdminLogin');
    });
