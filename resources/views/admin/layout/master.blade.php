@@ -746,7 +746,7 @@ use Illuminate\Support\Facades\Auth;
                                     </li>
                                     <li>
                                         <a href="./admin/brand" class="{{ (request()->segment(2) == 'brand') ? 'mm-active' : '' }}">
-                                            <i class="metismenu-icon"></i>Blog
+                                            <i class="metismenu-icon"></i>Nhãn hàng
                                         </a>
                                     </li>
                                 </ul>
