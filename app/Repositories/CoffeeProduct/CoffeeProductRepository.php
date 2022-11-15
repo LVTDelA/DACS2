@@ -39,7 +39,8 @@ class CoffeeProductRepository extends BaseRepositories implements CoffeeProductR
     }
 
     public function getProductsByCategory($categoryName, $request) {
-        $products = CoffeeCategory::where('name', $categoryName)->first()->CoffeeProducts->toQuery();
+//        $products = CoffeeCategory::where('name', $categoryName)->first()->CoffeeProducts->toQuery();
+        $products = CoffeeCategory::where('name', $categoryName)->first()->CoffeeProducts();
 
         $products = $this->filter($products, $request);
         $products = $this->sortAndPagination($products, $request);
