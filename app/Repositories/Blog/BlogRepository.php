@@ -4,6 +4,8 @@ namespace App\Repositories\Blog;
 
 use App\Models\Blog;
 use App\Repositories\BaseRepositories;
+use App\Repositories\Brand\BrandRepositoryInterface;
+
 
 class BlogRepository extends BaseRepositories implements BlogRepositoryInterface
 {

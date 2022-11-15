@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Service\BrandCoffee\BrandCoffeeServiceInterface;
+use App\Service\Brand\BrandServiceInterface;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
     private  $brandService;
-    public function __construct(BrandCoffeeServiceInterface $brandService)
+    public function __construct(BrandServiceInterface $brandService)
     {
        $this->brandService = $brandService;
     }
@@ -28,7 +28,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.brand.create');
     }
 
     /**
@@ -39,7 +39,11 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $this->brandService->create($data);
+
+        return redirect('admin/brand');
+
     }
 
     /**
@@ -61,7 +65,9 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = $this->brandService->find($id);
+
+        return view('admin.brand.edit', compact('brand'));
     }
 
     /**
@@ -73,7 +79,10 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $this->brandService->update($data,$id);
+
+        return redirect('admin/brand');
     }
 
     /**
@@ -84,6 +93,8 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->brandService->delete($id);
+
+        return redirect('admin/brand');
     }
 }
