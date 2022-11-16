@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Service\Order\OrderServiceInterface;
 use App\Service\User\UserServiceInterface;
 use App\Utilities\Constant;
 use Illuminate\Http\Request;
@@ -11,10 +12,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
-    private UserServiceInterface $userService;
+    private $orderService;
+    private $userService;
 
-    public function __construct(UserServiceInterface $userService)
+    public function __construct(OrderServiceInterface $orderService,
+        UserServiceInterface $userService)
     {
+        $this->orderService = $orderService;
         $this->userService = $userService;
     }
 
@@ -66,12 +70,12 @@ class AccountController extends Controller
     }
 
     public function myOrderIndex() {
-        $orders = Order::where('user_id', Auth::id())->orderBy('id', 'desc')->get();
+        $orders = $this->orderService->where('user_id', Auth::id())->orderBy('id', 'desc')->get();
 
         return view('front.account.my-order.index', compact('orders'));
     }
     public function myOrderShow($id) {
-        $order = Order::find($id);
+        $order = $this->orderService->find($id);
 
         return view('front.account.my-order.show', compact('order'));
     }

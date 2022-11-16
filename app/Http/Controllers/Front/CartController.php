@@ -4,17 +4,24 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\CoffeeProduct;
+use App\Service\CoffeeProduct\CoffeeProductServiceInterface;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
-    //
+    private $productService;
+
+    public function __construct(CoffeeProductServiceInterface $productService)
+    {
+        $this->productService = $productService;
+    }
+
     public function add(Request $request)
     {
 
         if ($request->ajax()) {
-            $product = CoffeeProduct::findOrFail($request->productId);
+            $product = $this->productService->find($request->productId);
 
             $response['cart'] = Cart::add([
                 'id' => $product->id,

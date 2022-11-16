@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Service\Order\OrderServiceInterface;
+use App\Service\OrderDetail\OrderDetailServiceInterface;
 use App\Utilities\Constant;
 use App\Utilities\VNPay;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -13,7 +15,16 @@ use Illuminate\Support\Facades\Mail;
 
 class CheckOutController extends Controller
 {
-    //
+    private $orderService;
+    private $orderDetailService;
+
+    public function __construct(OrderServiceInterface       $orderService,
+                                OrderDetailServiceInterface $orderDetailService)
+    {
+        $this->orderService = $orderService;
+        $this->orderDetailService = $orderDetailService;
+    }
+
     public function index()
     {
         $carts = Cart::content();
@@ -27,7 +38,7 @@ class CheckOutController extends Controller
 //        Thêm đơn hàng
         $data = $request->all();
         $data['status'] = Constant::order_status_ReceiveOrder;
-        $order = Order::create($data);
+        $order = $this->orderService->create($data);
 
 //        Thêm CT đơn hàng
         $carts = Cart::content();
@@ -42,7 +53,7 @@ class CheckOutController extends Controller
 
             ];
 
-            OrderDetail::create($data);
+            $this->orderDetailService->create($data);
         }
 
         if ($request->payment_type == 'pay_later') {
@@ -75,9 +86,9 @@ class CheckOutController extends Controller
         if ($vnp_ResponseCode != null) {
             if ($vnp_ResponseCode == 00) {
 //                Cập nhật trạng thái đơn hàng
-                Order::find($vnp_TxnRef)->update(['status' => Constant::order_status_Paid]);
+                $this->orderService->find($vnp_TxnRef)->update(['status' => Constant::order_status_Paid]);
 //                Gửi mail
-                $order = Order::find($vnp_TxnRef);
+                $order = $this->orderService->find($vnp_TxnRef);
                 $total = $vnp_Amount;
                 $this->sendMail($order, $total);
 
@@ -89,7 +100,7 @@ class CheckOutController extends Controller
                     ->with('notification', 'Đặt hàng và thanh toán thành công, cám ơn bạn đã lựa chọn chúng tôi. Hãy kiểm tra email của bạn.');
             } else {
 //                Xóa đơn hàng đã lưu vào DB
-                Order::find($vnp_TxnRef)->delete();
+                $this->orderService->find($vnp_TxnRef)->delete();
 
 //                Thông báo kết quả
                 return redirect('checkout/result')->with('notification', 'Thanh toán thất bại. Hãy thử lại.');
