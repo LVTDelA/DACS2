@@ -5,4 +5,6 @@ use App\Service\ServiceInterface;
 
 interface OrderServiceInterface extends ServiceInterface
 {
+    public function getOrdersByUser($user_id);
+
 }

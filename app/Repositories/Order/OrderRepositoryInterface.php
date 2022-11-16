@@ -6,4 +6,6 @@ use App\Repositories\RepositoriesInterface;
 
 interface OrderRepositoryInterface extends RepositoriesInterface
 {
+    public function getOrdersByUser($user_id);
+
 }

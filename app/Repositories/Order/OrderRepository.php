@@ -13,4 +13,8 @@ class OrderRepository extends BaseRepositories implements OrderRepositoryInterfa
         return Order::class;
     }
 
+    public function getOrdersByUser($user_id)
+    {
+        return $this->model->where('user_id', $user_id);
+    }
 }

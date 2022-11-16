@@ -70,7 +70,8 @@ class AccountController extends Controller
     }
 
     public function myOrderIndex() {
-        $orders = $this->orderService->where('user_id', Auth::id())->orderBy('id', 'desc')->get();
+//        $orders = $this->orderService->where('user_id', Auth::id())->orderBy('id', 'desc')->get();
+        $orders = $this->orderService->getOrdersByUser(Auth::id())->orderBy('id', 'desc')->get();;
 
         return view('front.account.my-order.index', compact('orders'));
     }
