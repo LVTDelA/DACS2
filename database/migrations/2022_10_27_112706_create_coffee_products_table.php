@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string("content")->nullable();
             $table->string("description")->nullable();
             $table->integer("price");
+            $table->string("featured");
             $table->integer("discount")->nullable();
             $table->string("weight")->nullable();
 

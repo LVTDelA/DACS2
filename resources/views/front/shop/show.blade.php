@@ -62,15 +62,6 @@
                                     <h3>{{$product->name}}</h3>
                                     <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
                                 </div>
-                                <!-- star -->
-                                {{--                                <div class="pd-rating">--}}
-                                {{--                                    <i class="fa fa-star"></i>--}}
-                                {{--                                    <i class="fa fa-star"></i>--}}
-                                {{--                                    <i class="fa fa-star"></i>--}}
-                                {{--                                    <i class="fa fa-star"></i>--}}
-                                {{--                                    <i class="fa fa-star-o"></i>--}}
-                                {{--                                    <span>(5)</span>--}}
-                                {{--                                </div>--}}
                                 <!-- moo ta -->
                                 <div class="pd-desc">
                                     <p>
@@ -92,10 +83,6 @@
                                         <a href="#" class="primary-btn pd-cart">Thêm giỏ hàng</a>
                                     </div>
                                 </div>
-                                <!-- pd-tags -->
-                                {{--                                <ul class="pd-tags">--}}
-                                {{--                                    <li><span>TAGS</span> : Coffee, Rang xay thường, Trung Nguyên</li>--}}
-                                {{--                                </ul>--}}
                             </div>
                         </div>
                     </div>

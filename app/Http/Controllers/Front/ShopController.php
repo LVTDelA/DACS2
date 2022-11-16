@@ -34,10 +34,6 @@ class ShopController extends Controller
 
         $product = $this->productService->find($id);
 
-//        $relatedProducts = CoffeeProduct::
-//        where('id_coffee_category', $product->id_coffee_category)
-//            ->limit(4)
-//            ->get();
         $relatedProducts = $this->productService->getRelatedProducts($product);
 
 //        dd($product);
@@ -53,10 +49,6 @@ class ShopController extends Controller
         $sortBy = $request->sort_by ?? 'latest';
         $search = $request->search ?? '';
 
-//        $products = CoffeeProduct::where('name', 'like', '%' . $search . '%');
-//
-//        $products = $this->filter($products, $request);
-//        $products = $this->sortAndPagination($products, $sortBy, $perPage);
         $products = $this->productService->getProductOnIndex($request);
 
 
@@ -75,8 +67,6 @@ class ShopController extends Controller
 //        $products = $this->productCategoryService->where('name', $categoryName)->first()->CoffeeProducts->toQuery();
         $products = $this->productService->getProductsByCategory($categoryName, $request);
 
-//        $products = $this->filter($products, $request);
-//        $products = $this->sortAndPagination($products, $sortBy, $perPage);
 
         return view('front.shop.index', compact('categories', 'brands', 'products'));
     }
