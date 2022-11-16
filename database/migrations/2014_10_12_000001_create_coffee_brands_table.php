@@ -13,27 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('order_details', function (Blueprint $table) {
-            $table->id();
+        Schema::create('coffee_brands', function (Blueprint $table) {
+            $table->increments('id');
 
-            $table->integer("id_product")->unsigned();
-            $table->integer("id_order")->unsigned();
-            $table->integer('qty');
-            $table->double("amount");
-            $table->double("total");
-
+            $table->string("name");
 
             $table->timestamps();
         });
     }
 
     /**
+     *
      * Reverse the migrations.
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('order_details');
+        Schema::dropIfExists('coffee_brands');
     }
 };

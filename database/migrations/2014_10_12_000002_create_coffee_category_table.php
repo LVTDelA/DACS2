@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -13,8 +14,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coffee_brands', function (Blueprint $table) {
-            $table->id();
+        Schema::create('coffee_category', function (Blueprint $table) {
+            $table->increments('id');
 
             $table->string("name");
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coffee_brands');
+        Schema::dropIfExists('coffee_category');
     }
 };

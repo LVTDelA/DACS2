@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Description" content="Enter your description here"/>
-    <title>Order Notification | CodeLean eCommerce</title>
+    <title>Order </title>
 </head>
 
 <body
@@ -25,11 +25,6 @@
 
             <div class="row"
                  style="height: 100px; padding: 10px 20px; line-height: 90px; background-color: white; box-sizing: border-box;">
-                {{--<h1 class="pl-3"
-                    style="color: orange; line-height: 00px; float: left; padding-left: 20px; padding-top: 5px;">
-                    <img src="{{$message->embed(asset('front/img/logo.png'))}}"
-                         height="40" alt="logo">
-                </h1>--}}
                 <h1 class="pl-2"
                     style="color: orange; line-height: 30px; float: left; padding-left: 20px; font-size: 40px; font-weight: 500;">
                     CodeLean eCommerce

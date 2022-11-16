@@ -9,16 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      *
+     *
      * @return void
      */
     public function up()
     {
-        Schema::create('coffee_category', function (Blueprint $table) {
-            $table->id();
+        Schema::create('coffee_images', function (Blueprint $table) {
+            $table->increments('id');
 
-            $table->string("name");
+            $table->integer("id_product")->unsigned();
+            $table->string("path");
 
             $table->timestamps();
+        });
+
+        Schema::table('coffee_images', function (Blueprint $table){
+            $table->foreign('id_product')->references('id') -> on ('coffee_products');
         });
     }
 
@@ -29,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coffee_category');
+        Schema::dropIfExists('coffee_images');
     }
 };
