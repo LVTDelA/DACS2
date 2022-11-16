@@ -52,39 +52,41 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
+
+
         DB::table('blogs')->insert([
             [
-                // 'user_id' => 3,
+                 'us_id' => 3,
                 'title' => 'Nên chọn phin pha cà phê nhôm hay inox ?',
                 'image' => 'latest-1.jpg',
                 'content' => '',
             ],
             [
-                // 'user_id' => 3,
+                 'us_id' => 3,
                 'title' => 'Workshop “COLD BREW – xu hướng cafe lạnh”',
                 'image' => 'latest-2.jpg',
                 'content' => '',
             ],
             [
-                // 'user_id' => 3,
+                 'us_id' => 3,
                 'title' => 'NGẪM NỀN VĂN HÓA CÀ PHÊ Ở VIỆT NAM',
                 'image' => 'latest-3.jpg',
                 'content' => '',
             ],
             [
-                // 'user_id' => 3,
+                 'us_id' => 3,
                 'title' => 'CÙNG KHÁM PHÁ DÒNG CÀ PHÊ HẠT RANG XAY',
                 'image' => 'blog-1.jpg',
                 'content' => '',
             ],
             [
-                // 'user_id' => 3,
+                 'us_id' => 3,
                 'title' => 'TÁC DỤNG CỦA CÀ PHÊ TRONG ĐỜI SỐNG HÀNG NGÀY',
                 'image' => 'blog-2.jpg',
                 'content' => '',
             ],
             [
-                // 'user_id' => 3,
+                 'us_id' => 3,
                 'title' => 'CÓ GÌ BÊN TRONG MỘT QUẦY PHA CHẾ CÀ PHÊ?',
                 'image' => 'blog-3.jpg',
                 'content' => '',
@@ -125,7 +127,7 @@ class DatabaseSeeder extends Seeder
                 'id_coffee_category' => 2,
                 'name' => 'Cà phê House Blend',
                 'description' => 'Thành phần: Cà phê House Blend gồm 4 loại hạt cà phê Arabica, Robusta, Cherry và Catimor. Đặc tính: Nước pha màu nâu sánh. Mùi thơm đặc trưng. Hàm lượng Caffeine: khoảng 1.0%. Khối lượng: Hộp 500gr.',
-                'featured'=> true,
+
                 'price' => 70.000,
                 'discount' => 80.000,
                 'weight' => 1.3,
@@ -137,7 +139,7 @@ class DatabaseSeeder extends Seeder
                 'id_coffee_category' => 2,
                 'name' => 'Cafe hạt Culi Robusta Trung Nguyên',
                 'description' => null,
-                'featured'=> true,
+
                 'price' => 160.000,
                 'discount' => 175.000,
                 'weight' => null,
@@ -149,7 +151,7 @@ class DatabaseSeeder extends Seeder
                 'id_coffee_category' => 2,
                 'name' => 'Cà Phê Hạt Mộc Success 8 ',
                 'description' => null,
-                'featured'=> true,
+
                 'price' => 310.000,
                 'discount' => 335.000,
                 'weight' => null,
@@ -161,7 +163,7 @@ class DatabaseSeeder extends Seeder
                 'id_coffee_category' => 1,
                 'name' => 'Cafe Hạt Trung Nguyên Success 2',
                 'description' => null,
-                'featured'=> false,
+
                 'price' => 310.000,
                 'discount' => 335.000,
                 'weight' => null,
@@ -173,7 +175,7 @@ class DatabaseSeeder extends Seeder
                 'id_coffee_category' => 3,
                 'name' => "Cà phê Chế phin 3",
                 'description' => null,
-                'featured'=> true,
+
                 'price' => 117.000,
                 'discount' => 135.000,
                 'weight' => null,
@@ -185,7 +187,7 @@ class DatabaseSeeder extends Seeder
                 'id_coffee_category' => 2,
                 'name' => 'Cà phê Sáng tạo 3',
                 'description' => null,
-                'featured'=> true,
+
                 'price' => 97.000,
                 'discount' => 115.000,
                 'weight' => null,

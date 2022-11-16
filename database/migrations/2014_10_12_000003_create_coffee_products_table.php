@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('coffee_products', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
 
             $table->integer("id_coffee_brand")->unsigned();
             $table->integer("id_coffee_category")->unsigned();
@@ -22,12 +22,16 @@ return new class extends Migration
             $table->string("content")->nullable();
             $table->string("description")->nullable();
             $table->integer("price");
-            $table->string("featured");
             $table->integer("discount")->nullable();
             $table->string("weight")->nullable();
 
             $table->timestamps();
         });
+
+       Schema::table('coffee_products', function (Blueprint $table){
+           $table->foreign('id_coffee_brand')->references('id') -> on ('coffee_brands');
+           $table->foreign('id_coffee_category')->references('id') -> on ('coffee_category');
+       });
     }
 
     /**

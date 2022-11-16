@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
 
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id')->unsigned();
             $table->string("first_name")->nullable();
             $table->string("last_name")->nullable();
             $table->string("country");
@@ -27,6 +27,11 @@ return new class extends Migration
             $table->integer('status');
 
             $table->timestamps();
+        });
+//        Foreign Key
+       Schema::table('orders', function (Blueprint $table){
+           $table->foreign('user_id')->references('id') -> on ('users');
+
         });
     }
 

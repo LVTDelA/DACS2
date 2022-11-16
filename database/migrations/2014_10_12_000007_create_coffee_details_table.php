@@ -13,12 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coffee_brands', function (Blueprint $table) {
-            $table->id();
+        Schema::create('coffee_details', function (Blueprint $table) {
+            $table->increments('id');
 
-            $table->string("name");
+            $table->integer("id_product")->unsigned();
+            $table->string("type");
 
             $table->timestamps();
+        });
+
+        Schema::table('coffee_details', function (Blueprint $table){
+            $table->foreign('id_product')->references('id') -> on ('coffee_products');
         });
     }
 
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coffee_brands');
+        Schema::dropIfExists('coffee_details');
     }
 };
