@@ -191,7 +191,6 @@
 
 @yield("body")
 
-
 <!-- footer begin -->
 <footer class="footer-section">
     <div class="container">
