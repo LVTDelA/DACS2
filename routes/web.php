@@ -62,6 +62,12 @@ Route::prefix('account')->group(function () {
     });
 });
 
+Route::prefix('blog')->group(function() {
+    Route::get('/', [Front\BlogController::class, 'index']);
+    Route::get('/{id}', [Front\BlogController::class, 'show']);
+});
+
+Route::get('contact', [Front\ContactController::class, 'index']);
 
 // Admin
 

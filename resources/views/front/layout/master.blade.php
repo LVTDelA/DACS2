@@ -159,12 +159,13 @@
                     </li>
                     <li class="{{(request()->segment(1) == 'shop') ? 'active' : ''}}"><a href="./shop">Cửa hàng</a></li>
                     <li>
-                        <a href="#"><i class="ti-menu"></i> Loại cà phê</a>
+                        <a href="./shop"><i class="ti-menu"></i> Loại cà phê</a>
                         <ul class="dropdown">
-                            <li><a href="#">Cà phê cao cấp</a></li>
-                            <li><a href="#">Cà phê hạt</a></li>
-                            <li><a href="#">Cà phê hòa tan</a></li>
-                            <li><a href="#">Cà phê rang xay</a></li>
+
+                            @foreach(\App\Models\CoffeeCategory::all() as $category)
+                                <li><a href="shop/{{$category->name}}">{{$category->name}}</a></li>
+                            @endforeach
+
                         </ul>
                     </li>
                     <li class="{{(request()->segment(1) == 'blog') ? 'active' : ''}}"><a href="./blog">Blog</a></li>

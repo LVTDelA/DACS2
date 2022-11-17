@@ -52,4 +52,9 @@ abstract class BaseRepositories implements RepositoriesInterface
             ->paginate($perPage)
             ->appends(['search' => $keyword]);
     }
+
+    public function getAllAndPaginate($perPage = 5)
+    {
+        return $this->model->all()->toQuery()->paginate($perPage)->withQueryString();
+    }
 }

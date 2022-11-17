@@ -11,4 +11,5 @@ interface RepositoriesInterface
     public function delete($id);
 
     public function searchAndPaginate($searchBy, $keyword, $perPage = 5);
+    public function getAllAndPaginate($perPage = 5);
 }

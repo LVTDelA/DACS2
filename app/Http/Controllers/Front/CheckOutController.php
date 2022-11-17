@@ -68,7 +68,7 @@ class CheckOutController extends Controller
             $data_url = VNPay::vnpay_create_payment([
                 'vnp_TxnRef' => $order->id, //id đơn hàng
                 'vnp_OrderInfo' => 'noi dung chuyen khoan', //thông tin thanh toán
-                'vnp_Amount' => Cart::total(0, null, null) * 1000 //số tiền
+                'vnp_Amount' => Cart::total(0, '', '') * 1000 //số tiền
             ]);
 
             return redirect()->to($data_url);
