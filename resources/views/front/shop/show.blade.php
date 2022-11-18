@@ -34,7 +34,7 @@
                             <!-- image big -->
                             <div class="product-pic-zoom">
                                 <img class="product-big-img"
-                                     src="front/img/product-single/{{$product->CoffeeImages[0]->path}}"
+                                     src="front/img/product-single/{{$product->CoffeeImages[0]->path ?? ''}}"
                                      alt="product-1">
                                 <div class="zoom-icon">
                                     <i class="fa fa-search-plus"></i>

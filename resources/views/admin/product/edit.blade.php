@@ -3,8 +3,6 @@
 @section('title','Product Edit')
 
 @section('body')
-            <div class="app-main__outer">
-
                 <!-- Main -->
                 <div class="app-main__inner">
 
