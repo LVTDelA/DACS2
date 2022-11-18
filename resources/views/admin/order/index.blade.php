@@ -99,7 +99,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="./order/show"
+                                                    <a href="./admin/order/{{$order->id}}"
                                                         class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
                                                         Chi tiết đơn hàng
                                                     </a>
