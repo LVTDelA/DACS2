@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front;
 use App\Http\Controllers\Admin\HomeController;
@@ -22,7 +23,7 @@ Route::get('/', [Front\HomeController::class, 'index']);
 
 //User
 
-Route::prefix('shop')->group(function() {
+Route::prefix('shop')->group(function () {
     Route::get('/product/{id}', [Front\ShopController::class, 'show']);
 
     Route::get('/', [Front\ShopController::class, 'index']);
@@ -31,7 +32,7 @@ Route::prefix('shop')->group(function() {
 });
 
 
-Route::prefix('cart')->group(function() {
+Route::prefix('cart')->group(function () {
     Route::get('add', [Front\CartController::class, 'add']);
     Route::get('/', [Front\CartController::class, 'index']);
     Route::get('delete', [Front\CartController::class, 'delete']);
@@ -62,7 +63,7 @@ Route::prefix('account')->group(function () {
     });
 });
 
-Route::prefix('blog')->group(function() {
+Route::prefix('blog')->group(function () {
     Route::get('/', [Front\BlogController::class, 'index']);
     Route::get('/{id}', [Front\BlogController::class, 'show']);
 });
@@ -71,21 +72,22 @@ Route::get('contact', [Front\ContactController::class, 'index']);
 
 // Admin
 
-Route::prefix('admin')->middleware('CheckAdminLogin')->group(function (){
+Route::prefix('admin')->middleware('CheckAdminLogin')->group(function () {
 
-   Route::resource('user',\App\Http\Controllers\Admin\UserController::class);
-   Route::resource('category', \App\Http\Controllers\Admin\ProductCategoryController::class);
-   Route::resource('brand',\App\Http\Controllers\Admin\BrandController::class);
-   Route::resource('product',\App\Http\Controllers\Admin\ProductController::class);
-    Route::resource('product/{product_id}/image',\App\Http\Controllers\Admin\ProductImageController::class);Route::resource('product/{product_id}/image',\App\Http\Controllers\Admin\ProductImageController::class);
-     Route::resource('order',\App\Http\Controllers\Admin\OrderController::class);
+    Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
+    Route::resource('category', \App\Http\Controllers\Admin\ProductCategoryController::class);
+    Route::resource('brand', \App\Http\Controllers\Admin\BrandController::class);
+    Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
+    Route::resource('product/{product_id}/image', \App\Http\Controllers\Admin\ProductImageController::class);
+    Route::resource('product/{product_id}/image', \App\Http\Controllers\Admin\ProductImageController::class);
+    Route::resource('order', \App\Http\Controllers\Admin\OrderController::class);
 
 
     Route::prefix('login')->group(function () {
-      Route::get('',[App\Http\Controllers\Admin\HomeController::class, 'getLogin'])->withoutMiddleware('CheckAdminLogin');
-      Route::post('',[App\Http\Controllers\Admin\HomeController::class, 'postLogin'])->withoutMiddleware('CheckAdminLogin');
-   });
+        Route::get('', [App\Http\Controllers\Admin\HomeController::class, 'getLogin'])->withoutMiddleware('CheckAdminLogin');
+        Route::post('', [App\Http\Controllers\Admin\HomeController::class, 'postLogin'])->withoutMiddleware('CheckAdminLogin');
+    });
 
-   Route::get('logout', [App\Http\Controllers\Admin\HomeController::class, 'logout']);
+    Route::get('logout', [App\Http\Controllers\Admin\HomeController::class, 'logout']);
 
 });

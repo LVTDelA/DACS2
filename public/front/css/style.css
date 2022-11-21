@@ -1702,6 +1702,7 @@ ol {
 
 .filter-widget {
 	margin-bottom: 45px;
+    /*width: max-content;*/
 }
 
 .filter-widget .fw-title {
@@ -1778,7 +1779,7 @@ ol {
 
 .filter-widget .filter-range-wrap .range-slider .price-input:after {
 	position: absolute;
-	left: 58px;
+	left: 43%;
 	top: 13px;
 	height: 1px;
 	width: 17px;
@@ -1789,7 +1790,7 @@ ol {
 .filter-widget .filter-range-wrap .range-slider .price-input input {
 	font-size: 16px;
 	color: #252525;
-	max-width: 20%;
+	max-width: 40%;
 	text-align: center;
 	border: 1px solid #ebebeb;
 	border-radius: 2px;

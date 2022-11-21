@@ -19,14 +19,14 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-
         if ($request->ajax()) {
             $product = $this->productService->find($request->productId);
+            $qty = $request->qty;
 
             $response['cart'] = Cart::add([
                 'id' => $product->id,
                 'name' => $product->name,
-                'qty' => 1,
+                'qty' => $qty,
                 'price' => $product->discount ?? $product->price,
                 'weight' => $product->weight ?? 0,
                 'options' => [
@@ -42,7 +42,7 @@ class CartController extends Controller
             return $response;
         }
 
-        return 'abcd';
+        return back();
     }
 
     public function index()

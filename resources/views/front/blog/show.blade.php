@@ -48,11 +48,13 @@
                     <!-- another post blog -->
                     <div class="blog-post">
                         <div class="row">
+
+{{--                            @if($blog->id > 1)--}}
                             <div class="col-lg-5 col-md-6">
-                                <a href="#" class="prev-blog">
+                                <a href="./blog/" class="prev-blog">
                                     <div class="pb-pic">
                                         <i class="ti-arrow-left"></i>
-                                        <img src="img/blog/prev-blog.png" alt="">
+                                        <img src="img/blog/" alt="">
                                     </div>
                                     <div class="pb-text">
                                         <span>Bài viết trước</span>
@@ -60,8 +62,10 @@
                                     </div>
                                 </a>
                             </div>
+{{--                            @endif--}}
+
                             <div class="col-lg-5 col-md-6 offset-lg-2">
-                                <a href="#" class="next-blog">
+                                <a href="./blog/" class="next-blog">
                                     <div class="nb-pic">
                                         <img src="img/blog/next-blog.png" alt="">
                                         <i class="ti-arrow-right"></i>
@@ -76,23 +80,23 @@
                         </div>
                     </div>
                     <!-- comment for customer -->
-                    <div class="leave-comment">
-                        <h4>Để lại bình luận :</h4>
-                        <form action="#" class="comment-form">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="text" placeholder="Tên">
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="text" placeholder="Email">
-                                </div>
-                                <div class="col-lg-12">
-                                    <textarea type="text" placeholder="Lời nhắn"> </textarea>
-                                    <button type="submit" class="site-btn">Gửi bình luận</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+{{--                    <div class="leave-comment">--}}
+{{--                        <h4>Để lại bình luận :</h4>--}}
+{{--                        <form action="#" class="comment-form">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <input type="text" placeholder="Tên">--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-6">--}}
+{{--                                    <input type="text" placeholder="Email">--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-12">--}}
+{{--                                    <textarea type="text" placeholder="Lời nhắn"> </textarea>--}}
+{{--                                    <button type="submit" class="site-btn">Gửi bình luận</button>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

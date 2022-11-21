@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="front/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="front/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="front/css/style.css" type="text/css">
+
+    <!-- Toastr -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -268,6 +272,7 @@
 <script src="front/js/jquery.dd.min.js"></script>
 <script src="front/js/jquery.slicknav.js"></script>
 <script src="front/js/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 <script src="front/js/main.js"></script>
 </body>
 
