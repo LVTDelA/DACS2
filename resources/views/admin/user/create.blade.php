@@ -11,7 +11,7 @@
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
+                                    <i class="pe-7s-users icon-gradient bg-mean-fruit"></i>
                                 </div>
                                 <div>
                                    Người dùng
@@ -30,7 +30,7 @@
                                     <form method="post" action="admin/user" enctype="multipart/form-data">
                                        @csrf
 
-                                       @include('admin.components.notification')    
+                                       @include('admin.components.notification')
 
                                         <div class="position-relative row form-group">
                                             <label for="image"
@@ -121,11 +121,11 @@
                                                     <option value="">-- Phân quyền --</option>
 
                                                 @foreach (\App\Utilities\Constant::$user_level as $key => $value)
-                                                
+
                                                 <option value={{ $key }}>
                                                     {{$value}}
                                                 </option>
-                                                
+
                                                 @endforeach
                                                 </select>
                                             </div>

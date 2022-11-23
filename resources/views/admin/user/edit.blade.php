@@ -11,7 +11,7 @@
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
+                                    <i class="pe-7s-users icon-gradient bg-mean-fruit"></i>
                                 </div>
                                 <div>
                                     Người dùng
@@ -31,7 +31,7 @@
                                         @csrf
 
 @method('PUT')
-@include('admin.components.notification')    
+@include('admin.components.notification')
                                         <div class="position-relative row form-group">
                                             <label for="image"
                                                 class="col-md-3 text-md-right col-form-label">Avatar</label>
@@ -121,11 +121,11 @@
                                                     <option value="">-- Phân quyền --</option>
 
                                                 @foreach (\App\Utilities\Constant::$user_level as $key => $value)
-                                                
+
                                                 <option value={{ $key }} {{$user->level == $key ? 'selected' : ''}}>
                                                     {{$value}}
                                                 </option>
-                                                
+
                                                 @endforeach
                                                 </select>
                                             </div>

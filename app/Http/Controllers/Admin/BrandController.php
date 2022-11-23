@@ -18,6 +18,7 @@ class BrandController extends Controller
     {
 
         $brands = $this->brandService->searchAndPaginate('name', $request->get('search'));
+       //compact truyền dữ liệu ra views
         return view('admin.brand.index',compact('brands'));
     }
 
@@ -39,6 +40,7 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->all() Nhận tất cả dữ liệu của form
         $data = $request->all();
         $this->brandService->create($data);
 

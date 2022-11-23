@@ -9,7 +9,7 @@
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
+                                    <i class="pe-7s-news-paper icon-gradient bg-mean-fruit"></i>
                                 </div>
                                 <div>
                                     Nhãn hàng
@@ -39,7 +39,7 @@
                                     <form>
                                         <div class="input-group">
                                             <input type="search" name="search" id="search" value="{{request('search')}}"
-                                                placeholder="Search everything" class="form-control">
+                                                placeholder="Tìm kiếm" class="form-control">
                                             <span class="input-group-append">
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-search"></i>&nbsp;

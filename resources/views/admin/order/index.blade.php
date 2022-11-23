@@ -10,7 +10,7 @@
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
+                                    <i class="pe-7s-shopbag icon-gradient bg-mean-fruit"></i>
                                 </div>
                                 <div>
                                     Đơn hàng
@@ -32,11 +32,11 @@
                                     <form>
                                         <div class="input-group">
                                             <input type="search" name="search" id="search" value="{{request('search')}}"
-                                                placeholder="Search everything" class="form-control">
+                                                placeholder="Tìm kiếm" class="form-control">
                                             <span class="input-group-append">
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-search"></i>&nbsp;
-                                                    Search
+                                                  Tìm kiếm
                                                 </button>
                                             </span>
                                         </div>
@@ -57,7 +57,7 @@
                                                 <th class="text-center">ID</th>
                                                 <th>Khách hàng / Sản phẩm</th>
                                                 <th class="text-center">Địa chỉ</th>
-                                                <th class="text-center">Số lượng</th>
+                                                <th class="text-center">Đơn giá</th>
                                                 <th class="text-center">Trạng thái</th>
                                                 <th class="text-center">Quản lý đơn hàng</th>
                                             </tr>
@@ -92,7 +92,7 @@
                                                 <td class="text-center">
                                                     {{$order->street_address . ' - ' . $order->country}}
                                                 </td>
-                                                <td class="text-center">{{array_sum(array_column($order->orderDetails->toArray(),'total')) }}</td>
+                                                <td class="text-center">{{array_sum(array_column($order->orderDetails->toArray(),'total')) }}.000 vnđ</td>
                                                 <td class="text-center">
                                                     <div class="badge badge-dark">
                                                         {{App\Utilities\Constant::$order_status[$order->status]}}

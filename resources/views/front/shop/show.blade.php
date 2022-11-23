@@ -34,7 +34,7 @@
                             <!-- image big -->
                             <div class="product-pic-zoom">
                                 <img class="product-big-img"
-                                     src="front/img/product-single/{{$product->CoffeeImages[0]->path ?? ''}}"
+                                     src="front/img/products/{{$product->CoffeeImages[0]->path ?? ''}}"
                                      alt="product-1">
                                 <div class="zoom-icon">
                                     <i class="fa fa-search-plus"></i>
@@ -46,8 +46,8 @@
 
                                     @foreach($product->CoffeeImages as $productImage)
                                         <div class="pt active"
-                                             data-imgbigurl="front/img/product-single/{{$productImage->path}}">
-                                            <img src="front/img/product-single/{{$productImage->path}}" alt="">
+                                             data-imgbigurl="front/img/product-single/{{$productImage[0]->path ?? ''}}">
+                                            <img src="front/img/product-single/{{$productImage[0]->path ?? ''}}" alt="">
                                         </div>
                                     @endforeach
 
@@ -86,6 +86,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

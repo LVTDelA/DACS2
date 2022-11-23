@@ -54,7 +54,7 @@
                                 <a href="#" class="forget-pass">Quên mật khẩu</a>
                             </div>
                         </div>
-                        <button type="submit" class="site-btn login-btn">Đăng nhập</button>
+                        <input type="submit" class="site-btn login-btn">Đăng nhập</input>
                     </form>
                     <!-- Switch login to sign up -->
                     <div class="switch-login">

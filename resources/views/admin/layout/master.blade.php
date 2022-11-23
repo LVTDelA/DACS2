@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Auth;
     <meta name="msapplication-tap-highlight" content="no">
 
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-
+{{-- moris chart for manage--}}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+{{--    --}}
     <link href="./admin/main.css" rel="stylesheet">
     <link href="./admin/my_style.css" rel="stylesheet">
 </head>
@@ -558,7 +560,7 @@ use Illuminate\Support\Facades\Auth;
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="front/img/user/{{Auth::user()->avatar ?? 'default-avatar.jpg'}}"
+                                            <img width="42" class="rounded-circle" src="admin/assets/images/avatars/{{Auth::user()->avatar ?? ''}}"
                                                 alt="">
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
@@ -566,15 +568,14 @@ use Illuminate\Support\Facades\Auth;
                                             class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
                                             <div class="dropdown-menu-header">
                                                 <div class="dropdown-menu-header-inner bg-info">
-                                                    <div class="menu-header-image opacity-2"
-                                                        style="background-image: url('./admin/assets/images/dropdown-header/city3.jpg');">
+                                                    <div class="menu-header-image opacity-2">
                                                     </div>
                                                     <div class="menu-header-content text-left">
                                                         <div class="widget-content p-0">
                                                             <div class="widget-content-wrapper">
                                                                 <div class="widget-content-left mr-3">
                                                                     <img width="42" class="rounded-circle"
-                                                                        src="front/img/user/{{Auth::user()->avatar ?? 'default-avatar.jpg'}}" alt="">
+                                                                        src="admin/assets/images/avatars/{{Auth::user()->avatar ?? ''}}" alt="">
                                                                 </div>
                                                                 <div class="widget-content-left">
                                                                     <div class="widget-heading">{{Auth::user()->name ?? ''}}</div>
@@ -725,6 +726,11 @@ use Illuminate\Support\Facades\Auth;
                                 </a>
                                 <ul>
                                     <li>
+                                        <a href="./admin/manage" class="{{ (request()->segment(2) == 'manage') ? 'mm-active' : '' }}" >
+                                            <i class="metismenu-icon"></i>Trang Thống Kê
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="./admin/user" class="{{ (request()->segment(2) == 'user') ? 'mm-active' : '' }}" >
                                             <i class="metismenu-icon"></i>Người dùng
                                         </a>
@@ -767,5 +773,41 @@ use Illuminate\Support\Facades\Auth;
 
     <script type="text/javascript" src="./admin//assets/scripts/main.js"></script>
     <script type="text/javascript" src="./admin//assets/scripts/my_script.js"></script>
+
+{{-- Chart --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+            <script type="text/javascript">
+                new Morris.Area({
+                    element: 'chart',
+                    data: [
+                        { year: '2008', value: 20 },
+                        { year: '2009', value: 10 },
+                        { year: '2010', value: 5 },
+                        { year: '2011', value: 5 },
+                        { year: '2012', value: 20 }
+                    ],
+                    xkey: 'year',
+                    ykeys: ['value'],
+                    labels: ['Value']
+                });
+            </script>
+
+            <script type="text/javascript">
+                new Morris.Bar({
+                    element: 'chartbar',
+                    data: [
+                        { year: '2008', value: 20 },
+                        { year: '2009', value: 10 },
+                        { year: '2010', value: 5 },
+                        { year: '2011', value: 5 },
+                        { year: '2012', value: 20 }
+                    ],
+                    xkey: 'year',
+                    ykeys: ['value'],
+                    labels: ['Value']
+                });
+            </script>
         </div>
     </div>

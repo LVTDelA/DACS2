@@ -74,6 +74,7 @@ Route::get('contact', [Front\ContactController::class, 'index']);
 
 Route::prefix('admin')->middleware('CheckAdminLogin')->group(function () {
 
+    Route::resource('manage', \App\Http\Controllers\Admin\ManageController::class);
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('category', \App\Http\Controllers\Admin\ProductCategoryController::class);
     Route::resource('brand', \App\Http\Controllers\Admin\BrandController::class);

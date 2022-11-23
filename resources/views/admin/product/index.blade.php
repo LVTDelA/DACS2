@@ -39,7 +39,7 @@
                                     <form>
                                         <div class="input-group">
                                             <input type="search" name="search" id="search" value="{{ request('search') }}"
-                                                placeholder="Search everything" class="form-control">
+                                                placeholder="Tìm kiếm sản phẩm" class="form-control">
                                             <span class="input-group-append">
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-search"></i>&nbsp;
@@ -93,7 +93,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="text-center">{{$product -> weight}}</td>
+                                                <td class="text-center">{{$product -> weight}} sản phẩm</td>
                                                 <td class="text-center">
                                                     <div class="badge badge-success mt-2">
                                                         {{$product -> price}}.000 vnđ

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -20,7 +21,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Bun',
                 'email' => 'bun293@gmail.com',
-                'password' => Hash::make('123456'),
+                'password' => Hash::make("123456"),
                 'avatar' => null,
                 'level' => 0,
                 'description' => null,
@@ -50,7 +51,6 @@ class DatabaseSeeder extends Seeder
                 'description' => 'khachhang'
             ],
         ]);
-
 
 
         DB::table('blogs')->insert([
