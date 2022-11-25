@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="rb-text">
                                         <h6>{{$blog->title}}</h6>
-                                        <p><span>25/10/2022</span></p>
+                                        <p><span>{{date('M d, Y', strtotime($blog->created_at))}}</span></p>
                                     </div>
                                 </a>
                                 @endforeach

@@ -1,4 +1,9 @@
-<form action="{{request()->segment(2) == 'product' ? 'shop' : ''}}">
+<form
+    action="{{request()->segment(2) == 'product' ? 'shop' : ''}}"
+>
+    <input type="hidden" name="sort_by" value="{{request()->sort_by}}">
+    <input type="hidden" name="show" value="{{request()->show}}">
+
     <div class="filter-widget">
         <h4 class="fw-title"> Loại Cà Phê </h4>
         <ul class="filter-catagories">
@@ -19,7 +24,8 @@
                         <input type="checkbox"
                                name="brand[{{$brand->id}}]"
                                {{(request('brand')[$brand->id] ?? '') == 'on' ? 'checked' : ''}}
-                               onchange="this.form.submit()">
+{{--                               onchange="this.form.submit()"--}}
+                        >
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -48,6 +54,7 @@
             </div>
         </div>
 
+        <a href="{{request()->url()}}" class="filter-btn">Xóa bộ lọc</a>
         <button type="submit" class="filter-btn">Tìm</button>
     </div>
     <!-- tags -->

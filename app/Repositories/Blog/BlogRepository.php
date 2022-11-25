@@ -21,4 +21,13 @@ class BlogRepository extends BaseRepositories implements BlogRepositoryInterface
             ->limit($limit)
             ->get();
     }
+
+    public function getPreAndNextBlog($id)
+    {
+//        dd($this->model->all());
+        $preBlog = $this->model->where('id', '<', $id)->first();
+        $nextBlog = $this->model->where('id', '>', $id)->first();
+
+        return [$preBlog, $nextBlog];
+    }
 }

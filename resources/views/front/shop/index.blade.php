@@ -34,6 +34,13 @@
                         <div class="row">
                             <div class="col-lg-7 col-md-7">
                                 <form action="">
+                                    @foreach(array_keys(request()->brand ?? []) as $brand_id)
+                                        <input type="hidden" name="brand[{{$brand_id}}]" value="on">
+                                    @endforeach
+
+                                        <input type="hidden" name="price_min" value="{{request()->price_min}}">
+                                        <input type="hidden" name="price_max" value="{{request()->price_max}}">
+
                                     <div class="select-option">
                                         <select name="sort_by" class="sorting" onchange="this.form.submit()">
                                             <option

@@ -1841,6 +1841,10 @@ ol {
 	text-transform: uppercase;
 }
 
+.filter-btn + .filter-btn {
+    margin-left: 3rem;
+}
+
 .filter-widget .fw-size-choose .sc-item {
 	display: inline-block;
 	margin-right: 5px;

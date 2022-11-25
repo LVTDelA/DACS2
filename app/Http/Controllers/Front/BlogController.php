@@ -26,6 +26,10 @@ class BlogController extends Controller
     public function show($id) {
         $blog = $this->blogService->find($id);
 
-        return view('front.blog.show', compact('blog'));
+        $preAndNextBlog = $this->blogService->getPreAndNextBlog($id);
+        $preBlog = $preAndNextBlog[0];
+        $nextBlog = $preAndNextBlog[1];
+
+        return view('front.blog.show', compact('blog', 'preBlog', 'nextBlog'));
     }
 }
