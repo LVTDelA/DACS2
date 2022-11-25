@@ -120,7 +120,7 @@
                                         <div class="pc-item">
                                             <label for="pc-check">
                                                 Thanh toán tiền mặt
-                                                <input type="radio" id="pc-check" name="payment_type" value="Trả sau"
+                                                <input type="radio" id="pc-check" name="payment_type" value="pay_later"
                                                        checked>
                                                 <span class="checkmark"></span>
                                             </label>
@@ -129,7 +129,7 @@
                                             <label for="pc-paypal">
                                                 Thanh toán thẻ
                                                 <input type="radio" id="pc-paypal" name="payment_type"
-                                                       value="Thanh toán thẻ">
+                                                       value="online_payment">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>

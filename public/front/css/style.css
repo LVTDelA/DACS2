@@ -2701,9 +2701,9 @@ ol {
 }
 
 .cart-buttons .continue-shop {
-	color: #b2b2b2;
+	color: black;
 	border: 2px solid #ebebeb;
-	background: #ffffff;
+	background: #e7ab3c;
 	margin-right: 8px;
 	padding: 12px 20px 12px 20px;
 	margin-bottom: 10px;
