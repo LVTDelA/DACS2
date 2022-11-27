@@ -12,4 +12,8 @@ class Blog extends Model
     protected $table = 'blogs';
     protected $primaryKey = 'id';
     protected $guarded = [];
+
+    public function User() {
+        return $this->belongsTo(User::class, 'us_id', 'id');
+    }
 }

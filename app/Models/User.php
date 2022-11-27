@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'country',
+        'street_address',
+        'phone',
         'avatar',
         'level',
         'description'
@@ -44,4 +47,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function Blogs() {
+        return $this->hasMany(Blog::class, 'us_id', 'id');
+    }
 }

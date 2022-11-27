@@ -62,6 +62,7 @@ class UserController extends Controller
             $data['avatar'] = Common::uploadFile($request->file('image'),'./admin/assets/images/avatars');
         }
 
+//        dd($data);
         $user = $this->userService->create($data);
 
         return redirect('admin/user/'.$user->id);
