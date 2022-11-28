@@ -67,7 +67,6 @@
                                     <p>
                                         {!!$product->description!!}
                                     </p>
-
                                     @if($product->discount != null)
                                         <h4>{{$product->discount}} 000₫<span>{{$product->price}} 000₫</span></h4>
                                     @else
