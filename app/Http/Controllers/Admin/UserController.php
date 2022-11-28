@@ -55,14 +55,14 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($request->get('password'));
 
-            $user = $this->userService->create($data);
 
         // Xu li file:
 
         if ($request->hasFile('image')){
             $data['avatar'] = Common::uploadFile($request->file('image'),'./admin/assets/images/avatars');
         }
-        dd($data);
+
+        $user = $this->userService->create($data);
 
         return redirect('admin/user/'.$user->id);
     }
