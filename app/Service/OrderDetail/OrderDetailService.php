@@ -14,4 +14,8 @@ class OrderDetailService extends BaseService implements OrderDetailServiceInterf
         $this->repository = $orderDetailRepository;
     }
 
+    public function deleteAllOrderDetailByIdOrder($id_order)
+    {
+        $this->repository->deleteAllOrderDetailByIdOrder($id_order);
+    }
 }

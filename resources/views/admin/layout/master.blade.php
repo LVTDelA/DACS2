@@ -779,19 +779,63 @@ use Illuminate\Support\Facades\Auth;
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
             <script type="text/javascript">
-                new Morris.Area({
-                    element: 'chart',
-                    data: [
-                        { year: '2008', value: 20 },
-                        { year: '2009', value: 10 },
-                        { year: '2010', value: 5 },
-                        { year: '2011', value: 5 },
-                        { year: '2012', value: 20 }
-                    ],
-                    xkey: 'year',
-                    ykeys: ['value'],
-                    labels: ['Value']
-                });
+                $.ajax({
+                    method: 'GET',
+                    url: 'admin/manage/dataChartLine',
+                })
+                    .done((chart) => {
+                        console.log(chart);
+
+                        new Morris.Area({
+                            element: 'chart',
+                            data: chart.data,
+                            xkey: chart.xkey,
+                            ykeys: chart.ykey,
+                            postUnits: ' 000 VND',
+                            labels: chart.labels
+                        });
+                    })
+                    .fail(() => {
+
+                    })
+
+                // let char = {
+                //     xkey : 'year',
+                //     ykey : ['value', 'value2'],
+                //     labels : ['value', 'value2'],
+                //
+                //     data : [
+                //         { year: '2008', value: 20, value2 : 1 },
+                //         { year: '2009', value: 10, value2 : 2 },
+                //         { year: '2010', value: 5, value2 : 17 },
+                //         { year: '2011', value: 5, value2 : 11 },
+                //         { year: '2012', value: 20, value2 : 12 }
+                //     ]
+                // }
+                //
+                // // console.log(char.xkey);
+                //
+                // new Morris.Line({
+                //     element: 'chart',
+                //     data: char.data,
+                //     xkey: char.xkey,
+                //     ykeys: char.ykey,
+                //     labels: char.labels
+                // });
+
+                // new Morris.Area({
+                //     element: 'chart',
+                //     data: [
+                //         { year: '2008', value: 20 },
+                //         { year: '2009', value: 10 },
+                //         { year: '2010', value: 5 },
+                //         { year: '2011', value: 5 },
+                //         { year: '2012', value: 20 }
+                //     ],
+                //     xkey: 'year',
+                //     ykeys: ['value'],
+                //     labels: ['Value']
+                // });
             </script>
 
             <script type="text/javascript">

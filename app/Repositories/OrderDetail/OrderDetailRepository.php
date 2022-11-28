@@ -13,4 +13,8 @@ class OrderDetailRepository extends BaseRepositories implements OrderDetailRepos
         return OrderDetail::class;
     }
 
+    public function deleteAllOrderDetailByIdOrder($id_order)
+    {
+        $this->model->where('id_order', $id_order)->delete();
+    }
 }

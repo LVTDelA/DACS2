@@ -57,4 +57,5 @@ abstract class BaseRepositories implements RepositoriesInterface
     {
         return $this->model->all()->toQuery()->paginate($perPage)->withQueryString();
     }
+
 }
