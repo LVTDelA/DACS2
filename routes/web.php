@@ -22,6 +22,7 @@ Route::get('/', [Front\HomeController::class, 'index']);
 
 
 //User
+Route::resource('user', \App\Http\Controllers\Front\UserController::class);
 
 Route::prefix('shop')->group(function () {
     Route::get('/product/{id}', [Front\ShopController::class, 'show']);
