@@ -566,6 +566,7 @@ use Illuminate\Support\Facades\Auth;
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true"
                                             class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
+{{--                                            user--}}
                                             <div class="dropdown-menu-header">
                                                 <div class="dropdown-menu-header-inner bg-info">
                                                     <div class="menu-header-image opacity-2">
@@ -592,6 +593,7 @@ use Illuminate\Support\Facades\Auth;
                                                     </div>
                                                 </div>
                                             </div>
+{{--                                            part below--}}
                                             <div class="scroll-area-xs" style="height: 150px;">
                                                 <div class="scrollbar-container ps">
                                                     <ul class="nav flex-column">
@@ -602,7 +604,7 @@ use Illuminate\Support\Facades\Auth;
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a href="javascript:void(0);" class="nav-link">Đổi mật khẩu</a>
+                                                            <a href="./admin/user/{{Auth::user()->id}}/edit" class="nav-link">Đổi mật khẩu</a>
                                                         </li>
                                                         <li class="nav-item-header nav-item">Tài khoản của tôi
                                                         </li>
@@ -655,10 +657,6 @@ use Illuminate\Support\Facades\Auth;
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="widget-content-left  ml-3 header-user-info">
-                                    <div class="widget-heading"> Alina Mclourd </div>
-                                    <div class="widget-subheading"> VP People Manager </div>
                                 </div>
                                 <div class="widget-content-right header-user-info ml-3">
                                     <button type="button"

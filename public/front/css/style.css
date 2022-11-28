@@ -230,6 +230,133 @@ ol {
 		border-left-color: transparent;
 	}
 }
+/*---------------------
+  Avatar when login
+-----------------------*/
+
+.dropbtn {
+    cursor: pointer;
+}
+
+.dropdown-ava {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #e7ab3c ;}
+.dropdown-ava:hover .dropdown-content {display: block;}
+.dropdown-ava:hover .dropbtn {background-color: #3e8e41;}
+
+
+.user-menu {
+    position: absolute;
+    right: -22px;
+    background-color: #FFFFFF;
+    width: 256px;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,0.15);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 20px;
+
+.profile-highlight {
+    display: flex;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 12px 16px;
+    margin-bottom: 6px;
+
+img {
+    width: 48px;
+    height: 48px;
+    border-radius: 25px;
+    object-fit: cover;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    margin: auto 12px;
+}
+#profile-name {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+
+#profile-footer {
+    font-weight: 300;
+    font-size: 14px;
+    margin-top: 4px;
+}
+}
+
+}
+
+.footer {
+    border-top: 1px solid gray;
+    padding-top: 6px;
+    margin-top: 6px;
+
+.user-menu-link {
+    font-size: 13px;
+}
+}
+
+.user-menu-link {
+    display: flex;
+    text-decoration: none;
+    color: #333333;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 12px 16px;
+
+div {
+    margin: auto 10px;
+}
+
+&:hover {
+     background-color: #F5F5F5;
+     color: #333333;
+ }
+}
+
+&:before {
+     position: absolute;
+     top: -16px;
+     left: 120px;
+     display: inline-block;
+     content: "";
+     border: 8px solid transparent;
+     border-bottom-color: #E0E0E0;
+ }
+
+&:after {
+     position: absolute;
+     top: -14px;
+     left: 121px;
+     display: inline-block;
+     content: "";
+     border: 7px solid transparent;
+     border-bottom-color: #FFFFFF;
+ }
+}
 
 /*---------------------
   Header
@@ -1996,6 +2123,19 @@ ol {
   Product Details
 -----------------------*/
 
+.css-user{
+    display: inline-block;
+    float: right;
+    margin-top: 15%;
+}
+.css-img-user{
+    display: inline-block;
+    margin-left: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    float: left;
+}
 .product-shop.page-details {
 	padding-bottom: 60px;
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Front;
 
 use App\Service\User\UserServiceInterface;
 use App\Http\Controllers\Controller;
@@ -25,17 +25,7 @@ class UserController extends Controller
     {
         $users = $this->userService->searchAndPaginate('name', $request->get('search'));
 
-        return view('admin.user.index',compact('users'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.user.create');
+        return view('front.user.edit',compact('users'));
     }
 
     /**
@@ -55,48 +45,22 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($request->get('password'));
 
-            $user = $this->userService->create($data);
-
         // Xu li file:
 
         if ($request->hasFile('image')){
             $data['avatar'] = Common::uploadFile($request->file('image'),'./admin/assets/images/avatars');
         }
-        dd($data);
+
+        $user = $this->userService->create($data);
 
         return redirect('admin/user/'.$user->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        return view('admin.user.show',compact('user'));
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function edit(User $user)
     {
         return view('admin.user.edit',compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, User $user)
     {
         $data = $request -> all();
@@ -130,22 +94,4 @@ class UserController extends Controller
     return redirect('admin/user/' .$user->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-       $this->userService->delete($user->id);
-
-    //    Delete files:
-            $file_name = $user->avatar ;
-            if ($file_name != '') {
-                unlink('admin/assets/images/avatars/' .$file_name);
-    }
-
-    return redirect('admin/user');
-   }
 }

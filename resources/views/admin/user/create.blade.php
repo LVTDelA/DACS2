@@ -88,8 +88,8 @@
                                             <label for="country"
                                                 class="col-md-3 text-md-right col-form-label">Đất nước</label>
                                             <div class="col-md-9 col-xl-8">
-                                                <input name="country" id="country" placeholder="Country"
-                                                    type="text" class="form-control" value="">
+                                                <input name="country" id="country" placeholder="Đất nước"
+                                                    type="text" class="form-control">
                                             </div>
                                         </div>
 
@@ -99,8 +99,7 @@
                                             </label>
                                             <div class="col-md-9 col-xl-8">
                                                 <input name="street_address" id="street_address"
-                                                    placeholder="Street Address" type="text" class="form-control"
-                                                    value="">
+                                                    placeholder="Địa chỉ" type="text" class="form-control">
                                             </div>
                                         </div>
 
@@ -108,8 +107,8 @@
                                             <label for="phone"
                                                 class="col-md-3 text-md-right col-form-label">Điện thoại</label>
                                             <div class="col-md-9 col-xl-8">
-                                                <input required name="phone" id="phone" placeholder="Phone" type="tel"
-                                                    class="form-control" value="">
+                                                <input name="phone" id="phone" placeholder="Điện thoại" type="tel"
+                                                    class="form-control">
                                             </div>
                                         </div>
 

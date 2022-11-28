@@ -9,8 +9,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <a href="index.html"><i class="fa fa-home">Trang Chủ</i></a>
-                        <a href="shop.html">Cửa hàng</a>
+                        <a href="./"><i class="fa fa-home">Trang Chủ</i></a>
+                        <a href="/shop">Cửa hàng</a>
                         <span class="shop">Sản phẩm</span>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                                 <!-- moo ta -->
                                 <div class="pd-desc">
                                     <p>
-                                        {{$product->description}}
+                                        {!!$product->description!!}
                                     </p>
 
                                     @if($product->discount != null)

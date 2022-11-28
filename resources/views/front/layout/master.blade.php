@@ -52,22 +52,25 @@
             <div class="ht-right">
 
                 @if(Auth::check())
-                    <a href="./account/logout" class="login-panel">
-                        <i class="fa fa-user"></i>
-                        {{Auth::user()->name}} - Logout
-                    </a>
+                    <div class="dropdown-ava" style="float:right;">
+                        <img width="38" height="20" class="dropbtn rounded-circle" src="admin/assets/images/avatars/{{Auth::user()->avatar ?? ''}}"
+                             alt="">
+                        <div class="dropdown-content">
+                            <a href="#">Thông tin: <b>{{Auth::user()->name ?? ''}}</b>
+                        <a href="./front/user/{{Auth::user()->id}}/edit">Chỉnh sửa </a>
+                          <a href="./account/my-order">Đơn hàng của tôi</a>
+                            <a href="./account/logout" class="text-center">
+                                Đăng xuất
+                            </a>
+                        </div>
+                    </div>
+
+
                 @else
                 <a href="./account/login" class="login-panel">
                     <i class="fa fa-user"> Đăng Nhập</i>
                 </a>
                 @endif
-
-                <div class="top-social">
-                    <a href="#"><i class="ti-facebook"></i></a>
-                    <a href="#"><i class="ti-linkedin"></i></a>
-                    <a href="#"><i class="ti-twitter-alt"></i></a>
-
-                </div>
 
             </div>
         </div>
@@ -79,7 +82,7 @@
                 <!-- logo -->
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="./">
                             <img src="/front/img/logo.png" height="25" alt="logo">
                         </a>
                     </div>
@@ -180,7 +183,6 @@
                             <li><a href="./account/my-order">Đơn hàng của tôi</a></li>
                             <li><a href="./cart">Giỏ hàng</a></li>
                             <li><a href="./checkout">Thanh toán</a></li>
-                            <li><a href="faq.html">Câu hỏi thường gặp</a></li>
                             <li><a href="./account/register">Đăng kí</a></li>
                             <li><a href="./account/login">Đăng nhập</a></li>
                         </ul>
