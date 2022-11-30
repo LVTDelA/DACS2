@@ -78,13 +78,14 @@ Route::prefix('admin')->middleware('CheckAdminLogin')->group(function () {
     Route::prefix('manage')->group(function () {
         Route::get('', [App\Http\Controllers\Admin\ManageController::class, 'index']);
 
-        Route::get('dataChartLine', [App\Http\Controllers\Admin\ManageController::class, 'getDataLineCharts']);
+        Route::get('dataChartLine', [App\Http\Controllers\Admin\ManageController::class, 'getDataChartLine']);
     });
 
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('category', \App\Http\Controllers\Admin\ProductCategoryController::class);
     Route::resource('brand', \App\Http\Controllers\Admin\BrandController::class);
     Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
+    Route::resource('product/{product_id}/image', \App\Http\Controllers\Admin\ProductImageController::class);
     Route::resource('product/{product_id}/image', \App\Http\Controllers\Admin\ProductImageController::class);
     Route::resource('order', \App\Http\Controllers\Admin\OrderController::class);
 

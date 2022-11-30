@@ -55,14 +55,16 @@
                     <div class="dropdown-ava" style="float:right;">
                         <img width="38" height="20" class="dropbtn rounded-circle" src="admin/assets/images/avatars/{{Auth::user()->avatar ?? ''}}"
                              alt="">
+
                         <div class="dropdown-content">
                             <a href="#">Thông tin: <b>{{Auth::user()->name ?? ''}}</b>
-                        <a href="./front/user/{{Auth::user()->id}}/edit">Chỉnh sửa </a>
+                        <a href="./user/{{Auth::user()->id}}/index">Chỉnh sửa </a>
                           <a href="./account/my-order">Đơn hàng của tôi</a>
                             <a href="./account/logout" class="text-center">
                                 Đăng xuất
                             </a>
                         </div>
+
                     </div>
 
 

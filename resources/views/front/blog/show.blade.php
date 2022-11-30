@@ -14,7 +14,7 @@
                         <p>Cà phê sức khỏe <span>25/10/2022</span></p>
                     </div>
                     <div class="blog-large-pic">
-                        <img src="/img/blog/detail-blog-1.jpg" alt="" class="fix_img_blog">
+                        <img src="front/img/blog/detail-blog-1.jpg" alt="" class="fix_img_blog">
                     </div>
                     <div class="blog-detail-desc">
                         <p>
@@ -54,7 +54,7 @@
                                 <a href="./blog/" class="prev-blog">
                                     <div class="pb-pic">
                                         <i class="ti-arrow-left"></i>
-                                        <img src="img/blog/" alt="">
+                                        <img src="front/img/blog/latest-1.jpg" alt="">
                                     </div>
                                     <div class="pb-text">
                                         <span>Bài viết trước</span>
@@ -67,7 +67,7 @@
                             <div class="col-lg-5 col-md-6 offset-lg-2">
                                 <a href="./blog/" class="next-blog">
                                     <div class="nb-pic">
-                                        <img src="img/blog/next-blog.png" alt="">
+                                        <img src="front/img/blog/latest-2.jpg" alt="">
                                         <i class="ti-arrow-right"></i>
                                     </div>
                                     <div class="nb-text">

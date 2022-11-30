@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer("id_coffee_category")->unsigned();
             $table->string("name");
             $table->string("content")->nullable();
-            $table->string("description")->nullable();
+            $table->text("description")->nullable();
             $table->integer("price");
             $table->integer("discount")->nullable();
             $table->string("weight")->nullable();

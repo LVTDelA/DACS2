@@ -23,7 +23,7 @@ class HomeController extends Controller
         $remember = $request->remember;
 
         if (Auth::attempt($credentials, $remember)) {
-            return redirect()->intended('admin'); // Trả về trang trước khi Middleware bắt lại
+            return redirect()->intended('admin/user'); // Trả về trang trước khi Middleware bắt lại
         } else {
             return back()->with('notification', 'Lỗi! Email hoặc mật khẩu không chính xác.');
         };

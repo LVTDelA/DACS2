@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Utilities\Common;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -23,9 +24,9 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = $this->userService->searchAndPaginate('name', $request->get('search'));
+        $user = Auth::user();
 
-        return view('front.user.edit',compact('users'));
+        return view('front.user.index',compact('user'));
     }
 
     /**
@@ -53,12 +54,12 @@ class UserController extends Controller
 
         $user = $this->userService->create($data);
 
-        return redirect('admin/user/'.$user->id);
+        return redirect('front/user/'.$user->id);
     }
 
     public function edit(User $user)
     {
-        return view('admin.user.edit',compact('user'));
+        return view('front.user.edit',compact('user'));
     }
 
     public function update(Request $request, User $user)
@@ -91,7 +92,7 @@ class UserController extends Controller
     // Update Data
     $this->userService->update($data,$user->id);
 
-    return redirect('admin/user/' .$user->id);
+    return redirect('front/user/' .$user->id);
     }
 
 }
