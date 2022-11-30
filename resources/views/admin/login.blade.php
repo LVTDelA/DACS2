@@ -39,7 +39,7 @@
                                             <span>Hãy đăng nhập vào phía dưới</span>
                                         </h4>
                                     </div>
-                    @include('admin.components.notification')    
+                    @include('admin.components.notification')
                                         <div class="form-row">
                                             <div class="col-md-12">
                                                 <div class="position-relative form-group">
@@ -60,7 +60,7 @@
                                                 class="form-check-input">
                                             <label for="exampleCheck" class="form-check-label">Nhớ tài khoản</label>
                                         </div>
-                                  
+
                                 </div>
                                 <div class="modal-footer clearfix">
                                     <div class="float-right">

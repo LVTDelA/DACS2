@@ -22,7 +22,9 @@ Route::get('/', [Front\HomeController::class, 'index']);
 
 
 //User
-Route::resource('user', \App\Http\Controllers\Front\UserController::class);
+Route::prefix('user')->group(function () {
+    Route::get('/{id}/index', [Front\UserController::class, 'index']);
+});
 
 Route::prefix('shop')->group(function () {
     Route::get('/product/{id}', [Front\ShopController::class, 'show']);
@@ -74,12 +76,7 @@ Route::get('contact', [Front\ContactController::class, 'index']);
 // Admin
 
 Route::prefix('admin')->middleware('CheckAdminLogin')->group(function () {
-
-    Route::prefix('manage')->group(function () {
-        Route::get('', [App\Http\Controllers\Admin\ManageController::class, 'index']);
-
-        Route::get('dataChartLine', [App\Http\Controllers\Admin\ManageController::class, 'getDataChartLine']);
-    });
+//    Route::redirect('','admin/user');
 
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('category', \App\Http\Controllers\Admin\ProductCategoryController::class);
@@ -88,7 +85,11 @@ Route::prefix('admin')->middleware('CheckAdminLogin')->group(function () {
     Route::resource('product/{product_id}/image', \App\Http\Controllers\Admin\ProductImageController::class);
     Route::resource('product/{product_id}/image', \App\Http\Controllers\Admin\ProductImageController::class);
     Route::resource('order', \App\Http\Controllers\Admin\OrderController::class);
+    Route::prefix('manage')->group(function () {
+        Route::get('', [App\Http\Controllers\Admin\ManageController::class, 'index']);
 
+        Route::get('dataChartLine', [App\Http\Controllers\Admin\ManageController::class, 'getDataChartLine']);
+    });
 
     Route::prefix('login')->group(function () {
         Route::get('', [App\Http\Controllers\Admin\HomeController::class, 'getLogin'])->withoutMiddleware('CheckAdminLogin');

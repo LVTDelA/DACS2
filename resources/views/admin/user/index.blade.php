@@ -111,7 +111,7 @@
             <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
                 type="submit" data-toggle="tooltip" title="Delete"
                 data-placement="bottom"
-                onclick="return confirm('Do you really want to delete this item?')">
+                onclick="return confirm('Bạn muốn xóa người này không?')">
                 <span class="btn-icon-wrapper opacity-8">
                     <i class="fa fa-trash fa-w-20"></i>
                 </span>

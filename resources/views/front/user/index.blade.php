@@ -1,33 +1,14 @@
-@extends('admin.layout.master')
+@extends('front.layout.master')
 
-@section('title','User Edit')
+@section('title', 'User')
 
 @section('body')
 
-                <!-- Main -->
-                <div class="app-main__inner">
-
-                    <div class="app-page-title">
-                        <div class="page-title-wrapper">
-                            <div class="page-title-heading">
-                                <div class="page-title-icon">
-                                    <i class="pe-7s-users icon-gradient bg-mean-fruit"></i>
-                                </div>
-                                <div>
-                                    Người dùng
-                                    <div class="page-title-subheading">
-                                        Xem, tạo, sửa , xóa và quản lý người dùng trang web
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
+    <div class="row">
                         <div class="col-md-12">
                             <div class="main-card mb-3 card">
                                 <div class="card-body">
-                                    <form method="post" action="/admin/user/{{$user -> id}}" enctype="multipart/form-data">
+                                    <form method="post" action="/front/user/{{$user-> id}}" enctype="multipart/form-data">
                                         @csrf
 
 @method('PUT')
@@ -133,7 +114,7 @@
 
                                         <div class="position-relative row form-group">
                                             <label for="description"
-                                                   class="col-md-3 text-md-right col-form-label">Mô tả</label>
+                                                   class="col-md-3 text-md-right col-form-label">Description</label>
                                             <div class="col-md-9 col-xl-8">
                                                 <textarea name="description" id="description" class="form-control"></textarea>
                                             </div>
@@ -141,7 +122,7 @@
 
                                         <div class="position-relative row form-group mb-1">
                                             <div class="col-md-9 col-xl-8 offset-md-2">
-                                                <a href="./admin/user" class="border-0 btn btn-outline-danger mr-1">
+                                                <a href="./" class="border-0 btn btn-outline-danger mr-1">
                                                     <span class="btn-icon-wrapper pr-1 opacity-8">
                                                         <i class="fa fa-times fa-w-20"></i>
                                                     </span>
@@ -149,7 +130,7 @@
                                                 </a>
 
                                                 <button type="submit"
-                                                    class="btn-shadow btn-hover-shine btn btn-primary">
+                                                        class="btn-shadow btn-hover-shine btn btn-primary">
                                                     <span class="btn-icon-wrapper pr-2 opacity-8">
                                                         <i class="fa fa-download fa-w-20"></i>
                                                     </span>
