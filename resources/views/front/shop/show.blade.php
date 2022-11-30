@@ -46,8 +46,8 @@
 
                                     @foreach($product->CoffeeImages as $productImage)
                                         <div class="pt active"
-                                             data-imgbigurl="front/img/product-single/{{$productImage[0]->path ?? ''}}">
-                                            <img src="front/img/product-single/{{$productImage[0]->path ?? ''}}" alt="">
+                                             data-imgbigurl="front/img/products/{{$productImage->path ?? ''}}">
+                                            <img src="front/img/products/{{$productImage->path ?? ''}}" alt="">
                                         </div>
                                     @endforeach
 
@@ -65,7 +65,7 @@
                                 <!-- moo ta -->
                                 <div class="pd-desc">
                                     <p>
-                                        {!!$product->description!!}
+                                        {{$product->content}}
                                     </p>
                                     @if($product->discount != null)
                                         <h4>{{$product->discount}} 000₫<span>{{$product->price}} 000₫</span></h4>
@@ -83,6 +83,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>{!! $product->description !!}</h1>
                         </div>
                     </div>
 

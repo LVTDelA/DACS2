@@ -13,23 +13,48 @@ class ManageController extends Controller
         return view('admin.manage.index');
     }
 
-    public function getDataChartLine(Request $request)
+    public function getDataLineCharts(Request $request)
     {
-        if ($request->ajax()) {
+//        if ($request->ajax()) {
 
-        $data = OrderDetail::selectRaw('
-                DATE_FORMAT(order_details.created_at, "%Y-%m-%d") as date,
+            $statisticsBy = $request->statisticsBy ?? 'day';
+            $startDate = $request->startDate ?? 0;
+            $endDate = $request->endDate ?? date('y-m-d', time());
+
+            $dateFormat = '';
+            switch ($statisticsBy) {
+                case 'day':
+                    $dateFormat = '%Y-%m%-%d';
+                    break;
+                case 'month':
+                    $dateFormat = '%Y-%m';
+                    break;
+                case 'year':
+                    $dateFormat = '%Y';
+                    break;
+                default:
+                    $dateFormat = '%Y-%m%-%d';
+            }
+
+            $data = OrderDetail::selectRaw('
+                DATE_FORMAT(created_at, "'. $dateFormat .'") as date,
                 SUM(total) as sum
-            ')->groupBy('date')->get();
+            ')->where([
+                ['created_at', '>=', $startDate],
+                ['created_at' , '<=', $endDate]
+            ])->groupBy('date')->get();
 
 //            dd($data);
 
-        $chart = [
-            'xkey' => 'date',
-            'ykey' => ['sum'],
-            'labels' => ['Tổng'],
 
-            'data' => $data,
+            $chart = [
+                'data' => $data,
+
+                'xkey' => 'date',
+                'ykeys' => ['sum'],
+                'labels' => ['Tổng'],
+                'xLabels' => $statisticsBy
+
 //            'data' => [
 //                ['day' => '2008', 'value' => 20],
 //                ['day' => '2009', 'value' => 10],
@@ -53,7 +78,7 @@ class ManageController extends Controller
 //                    ]
 //            ];
 
-        return $chart;
-        }
+            return $chart;
+//        }
     }
 }

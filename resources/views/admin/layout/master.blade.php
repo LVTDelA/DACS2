@@ -777,25 +777,7 @@ use Illuminate\Support\Facades\Auth;
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
             <script type="text/javascript">
-                $.ajax({
-                    method: 'GET',
-                    url: 'admin/manage/dataChartLine',
-                })
-                    .done((chart) => {
-                        console.log(chart);
 
-                        new Morris.Area({
-                            element: 'chart',
-                            data: chart.data,
-                            xkey: chart.xkey,
-                            ykeys: chart.ykey,
-                            postUnits: ' 000 VND',
-                            labels: chart.labels
-                        });
-                    })
-                    .fail(() => {
-
-                    })
 
                 // let char = {
                 //     xkey : 'year',
