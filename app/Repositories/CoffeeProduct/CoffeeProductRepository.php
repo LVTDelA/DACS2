@@ -49,15 +49,15 @@ class CoffeeProductRepository extends BaseRepositories implements CoffeeProductR
     }
 
     private function sortAndPagination($products, Request $request) {
-        $perPage = $request->show ?? 3;
+        $perPage = $request->show ?? 6;
         $sortBy = $request->sort_by ?? 'latest';
 
         switch ($sortBy) {
             case 'latest':
-                $products = $products->orderBy('id');
+                $products = $products->orderByDesc('id');
                 break;
             case 'oldest':
-                $products = $products->orderByDesc('id');
+                $products = $products->orderBy('id');
                 break;
             case 'name-ascending':
                 $products = $products->orderBy('name');

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ProductImageController extends Controller
 {
-    private  $productService;
+    private $productService;
 
     public function __construct(CoffeeProductServiceInterface $productService)
     {
@@ -26,8 +26,8 @@ class ProductImageController extends Controller
     {
 
         $product = $this->productService->find($product_id);
-        $productImages = $product-> productImages;
-        return view('admin.product.image.index', compact('product','productImages'));
+        $productImages = $product->productImages;
+        return view('admin.product.image.index', compact('product', 'productImages'));
     }
 
     /**
@@ -43,28 +43,28 @@ class ProductImageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id_product)
+    public function store(Request $request, $id_product)
     {
         $data = $request->all();
 
 //        Xử lí file:
-        if ($request->hasFile('image')){
-           $data['path'] = Common::uploadFile($request->file('image'),'front/img/products');
+        if ($request->hasFile('image')) {
+            $data['path'] = Common::uploadFile($request->file('image'), 'front/img/products');
             unset($data['image']);
 
             CoffeeImage::create($data);
         }
 
-        return redirect('admin/product/' . $id_product .'/image');
+        return redirect('admin/product/' . $id_product . '/image');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -75,7 +75,7 @@ class ProductImageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -86,8 +86,8 @@ class ProductImageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -98,16 +98,16 @@ class ProductImageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($product_id,$product_image_id)
+    public function destroy($product_id, $product_image_id)
     {
 //        Delete images:
 
         $file_name = CoffeeImage::find($product_image_id)->path;
-        if ($file_name != ''){
-            unlink('front/img/products/' .$file_name);
+        if ($file_name != '') {
+            unlink('front/img/products/' . $file_name);
         }
 
 //        Delete images in DB:

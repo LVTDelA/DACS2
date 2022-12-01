@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\OrderDetail;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 
 class ManageController extends Controller
@@ -17,43 +18,44 @@ class ManageController extends Controller
     {
 //        if ($request->ajax()) {
 
-            $statisticsBy = $request->statisticsBy ?? 'day';
-            $startDate = $request->startDate ?? 0;
-            $endDate = $request->endDate ?? date('y-m-d', time());
+        $statisticsBy = $request->statisticsBy ?? 'day';
+        $startDate = $request->startDate ?? 0;
+        $endDate = $request->endDate ?? date('Y-m-d', time());
 
-            $dateFormat = '';
-            switch ($statisticsBy) {
-                case 'day':
-                    $dateFormat = '%Y-%m%-%d';
-                    break;
-                case 'month':
-                    $dateFormat = '%Y-%m';
-                    break;
-                case 'year':
-                    $dateFormat = '%Y';
-                    break;
-                default:
-                    $dateFormat = '%Y-%m%-%d';
-            }
+        $dateFormat = '';
+        switch ($statisticsBy) {
+            case 'day':
+                $dateFormat = '%Y-%m%-%d';
+                break;
+            case 'month':
+                $dateFormat = '%Y-%m';
+                break;
+            case 'year':
+                $dateFormat = '%Y';
+                break;
+            default:
+                $dateFormat = '%Y-%m%-%d';
+        }
 
-            $data = OrderDetail::selectRaw('
-                DATE_FORMAT(created_at, "'. $dateFormat .'") as date,
+//            dd([$startDate, $endDate]);
+        Debugbar::info([$startDate, $endDate]);
+        $data = OrderDetail::selectRaw('
+                DATE_FORMAT(created_at, "' . $dateFormat . '") as date,
                 SUM(total) as sum
-            ')->where([
-                ['created_at', '>=', $startDate],
-                ['created_at' , '<=', $endDate]
-            ])->groupBy('date')->get();
+            ')->whereRaw(
+            'DATE_FORMAT(created_at, "%Y-%m%-%d") BETWEEN \'' . $startDate . '\' AND \'' . $endDate . '\''
+        )->groupBy('date')->get();
 
 //            dd($data);
 
 
-            $chart = [
-                'data' => $data,
+        $chart = [
+            'data' => $data,
 
-                'xkey' => 'date',
-                'ykeys' => ['sum'],
-                'labels' => ['Tổng'],
-                'xLabels' => $statisticsBy
+            'xkey' => 'date',
+            'ykeys' => ['sum'],
+            'labels' => ['Tổng'],
+            'xLabels' => $statisticsBy
 
 //            'data' => [
 //                ['day' => '2008', 'value' => 20],
@@ -78,7 +80,7 @@ class ManageController extends Controller
 //                    ]
 //            ];
 
-            return $chart;
+        return $chart;
 //        }
     }
 }
