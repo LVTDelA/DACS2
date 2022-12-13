@@ -33,7 +33,7 @@ class AccountController extends Controller
             'level' => 2 //khách hàng
         ];
 
-        $remember = $request->remember;
+        $remember = $request->remember; //remember là 1 token
 
         if (Auth::attempt($credentials, $remember)) {
             return redirect()->intended(); // Trả về trang trước khi Middleware bắt lại
@@ -70,11 +70,13 @@ class AccountController extends Controller
     }
 
     public function myOrderIndex() {
-//        $orders = $this->orderService->where('user_id', Auth::id())->orderBy('id', 'desc')->get();
-        $orders = $this->orderService->getOrdersByUser(Auth::id())->orderBy('id', 'desc')->get();;
+//      $orders = $this->orderService->where('user_id', Auth::id())->orderBy('id', 'desc')->get();
+        $orders = $this->orderService->getOrdersByUser(Auth::id())->orderBy('id', 'desc')->get();;  //desc là giảm dần //asc là tăng dân
+
 
         return view('front.account.my-order.index', compact('orders'));
     }
+
     public function myOrderShow($id) {
         $order = $this->orderService->find($id);
 

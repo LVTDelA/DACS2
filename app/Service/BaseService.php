@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Repositories\User\UserRepositoryInterface;
-
+//Service kết nối giữa Controller với Respository để làm việc với database
 class BaseService implements ServiceInterface
 {
     public $repository;

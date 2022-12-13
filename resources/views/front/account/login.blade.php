@@ -21,7 +21,7 @@
 <!--END Breadcrumb (định vị vị trí ở web) -->
 
 <!-- Đăng nhập -->
-<div class="register-login-section spad">
+<div class="register-login-section spad ">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
@@ -54,7 +54,7 @@
                                 <a href="#" class="forget-pass">Quên mật khẩu</a>
                             </div>
                         </div>
-                        <input type="submit" class="site-btn login-btn">Đăng nhập</input>
+                        <button type="submit" class="site-btn login-btn">Đăng nhập</button>
                     </form>
                     <!-- Switch login to sign up -->
                     <div class="switch-login">

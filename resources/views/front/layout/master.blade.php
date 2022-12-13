@@ -53,7 +53,7 @@
 
                 @if(Auth::check())
                     <div class="dropdown-ava" style="float:right;">
-                        <img width="38" height="20" class="dropbtn rounded-circle" src="admin/assets/images/avatars/{{Auth::user()->avatar ?? ''}}"
+                        <img width="38" height="50" class="dropbtn rounded-circle" src="admin/assets/images/avatars/{{Auth::user()->avatar ?? ''}}"
                              alt="">
 
                         <div class="dropdown-content">

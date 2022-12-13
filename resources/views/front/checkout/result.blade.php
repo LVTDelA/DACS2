@@ -12,7 +12,7 @@
                     <div class="breadcrumb-text">
                         <a href="./index"><i class="fa fa-home">Trang Chủ</i></a>
                         <a href="./checkout">Cửa hàng</a>
-                        <span>Result</span>
+                        <span>Thanh toán</span>
                     </div>
                 </div>
             </div>

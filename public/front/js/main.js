@@ -270,7 +270,7 @@
 
     });
 })(jQuery);
-
+//js add cart
 function addCart(productId, qty = 1) {
     $.ajax({
         type: 'GET',
@@ -309,6 +309,7 @@ function addCart(productId, qty = 1) {
 
             toastr.success('Đã thêm sản phẩm vào giỏ hàng.')
         })
+        //if ajax truyeenf ko thành công ->
         .fail(() => {
             toastr.error('Lỗi, hãy thử lại!');
         })
@@ -317,7 +318,7 @@ function addCart(productId, qty = 1) {
 function updateCart(rowId, qty) {
     $.ajax({
         type: "GET",
-        url: "cart/update?" + $.param({'rowId': rowId, 'qty': qty})
+        url: "cart/update?" + $.param({'rowId': rowId, 'qty': qty}) //param là 1 stringquerry
     })
         .done((response) => {
             // $('.cart-count').text(response['count']);
@@ -385,7 +386,7 @@ function deleteCart(rowId) {
 function formatNumber(x) {
     return x.toLocaleString().replace(',', ' ');
 }
-
+//chỉnh thư viện toastr
 toastr.options = {
     "closeButton": true,
     "debug": false,

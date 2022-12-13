@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Repositories;
+//Repositories là tương tác trực tiếp với database
+//Connection from Controller with Repository.
 
 abstract class BaseRepositories implements RepositoriesInterface
 {

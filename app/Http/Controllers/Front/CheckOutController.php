@@ -80,7 +80,7 @@ class CheckOutController extends Controller
 //        Lấy data từ vnPay gửi xuống
         $vnp_ResponseCode = $request->get('vnp_ResponseCode'); // ResponseCode = 00 nếu thanh toán thành công
         $vnp_TxnRef = $request->get('vnp_TxnRef'); // order_id
-        $vnp_Amount = $request->get('vnp');
+        $vnp_Amount = $request->get('vnp'); //số tiền còn lại cần thanh toán
 
 //        Kiểm tra data
         if ($vnp_ResponseCode != null) {

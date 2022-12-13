@@ -84,8 +84,9 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
                         <div class="col-lg-12">
-                            <h1>{!! $product->description !!}</h1>
+                            <h1 class="container css-description">{!! $product->description !!}</h1>
                         </div>
                     </div>
 
