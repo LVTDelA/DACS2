@@ -57,8 +57,8 @@
                              alt="">
 
                         <div class="dropdown-content">
-                            <a href="#">Thông tin: <b>{{Auth::user()->name ?? ''}}</b>
-                        <a href="./user/{{Auth::user()->id}}/index">Chỉnh sửa </a>
+                            <a><b>{{Auth::user()->name ?? ''}}</b>
+                        <a href="./account/user/">Chỉnh sửa </a>
                           <a href="./account/my-order">Đơn hàng của tôi</a>
                             <a href="./account/logout" class="text-center">
                                 Đăng xuất

@@ -22,7 +22,11 @@ Route::get('/', [Front\HomeController::class, 'index']);
 
 
 //User
-Route::resource('user', \App\Http\Controllers\Front\UserController::class);
+//Route::resource('user', \App\Http\Controllers\Front\UserController::class);
+
+//Route::prefix('user')->group(function () {
+//   Route::get('/', [Front\UserController::class, 'index']);
+//});
 
 Route::prefix('shop')->group(function () {
     Route::get('/product/{id}', [Front\ShopController::class, 'show']);
@@ -62,6 +66,9 @@ Route::prefix('account')->group(function () {
         Route::get('/', [Front\AccountController::class, 'myOrderIndex']);
         Route::get('/{id}', [Front\AccountController::class, 'myOrderShow']);
     });
+
+    Route::resource('user', \App\Http\Controllers\Front\UserController::class)
+        ->middleware('CheckMemberLogin');
 });
 
 Route::prefix('blog')->group(function () {

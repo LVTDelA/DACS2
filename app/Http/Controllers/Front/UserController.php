@@ -17,6 +17,7 @@ class UserController extends Controller
     {
         $this->userService = $userService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,21 +27,21 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        return view('front.user.index',compact('user'));
+        return view('front.user.index', compact('user'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    // Cau hinh hien thi thong bao loi o views
+        // Cau hinh hien thi thong bao loi o views
     {
         if ($request->get('password') != $request->get('password_confirmation')) {
             return back()
-            ->with('notification','Error: Confirm password does not match');
+                ->with('notification', 'Error: Confirm password does not match');
         }
 
         $data = $request->all();
@@ -48,51 +49,54 @@ class UserController extends Controller
 
         // Xu li file:
 
-        if ($request->hasFile('image')){
-            $data['avatar'] = Common::uploadFile($request->file('image'),'./admin/assets/images/avatars');
+        if ($request->hasFile('image')) {
+            $data['avatar'] = Common::uploadFile($request->file('image'), './admin/assets/images/avatars');
         }
 
         $user = $this->userService->create($data);
 
-        return redirect('front/user/'.$user->id);
+        return redirect('front/user/' . $user->id);
     }
 
     public function edit(User $user)
     {
-        return view('front.user.edit',compact('user'));
+        return view('front.user.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
     {
-        $data = $request -> all();
+        $data = $request->all();
+
+        //Chống người dùng thay đổi level
+        unset($data['level']);
 
         // Xu li password
         if ($request->get('password') != null) {
-            if ($request->get('password')!= $request->get('password_confirmation')) {
+            if ($request->get('password') != $request->get('password_confirmation')) {
                 return back()
-                ->with('notification','Error: Confirm password does not match');
+                    ->with('notification', 'Error: Confirm password does not match');
             }
 
-        $data['password'] = bcrypt($request->get('password'));
-    }else {
-        unset($data['password']);
-    }
+            $data['password'] = bcrypt($request->get('password'));
+        } else {
+            unset($data['password']);
+        }
 
-    // Xu li file anh
-        if ($request->hasFile('image')){
+        // Xu li file anh
+        if ($request->hasFile('image')) {
             //add new img
-            $data['avatar'] = Common::uploadFile($request->file('image'),'admin/assets/images/avatars' );
+            $data['avatar'] = Common::uploadFile($request->file('image'), 'admin/assets/images/avatars');
             //xoa file cu
             $file_name_old = $request->get('image_old');
-            if ($file_name_old != ''){
-                unlink('admin/assets/images/avatars/' .$file_name_old);
+            if ($file_name_old != '') {
+                unlink('admin/assets/images/avatars/' . $file_name_old);
             }
         }
 
-    // Update Data
-    $this->userService->update($data,$user->id);
+        // Update Data
+        $this->userService->update($data, $user->id);
 
-    return redirect('front/user/' .$user->id);
+        return redirect('account/user/')->with(['notification' => 'Cập nhật thành công!']);
     }
 
 }
