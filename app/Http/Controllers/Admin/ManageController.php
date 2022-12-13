@@ -56,14 +56,6 @@ class ManageController extends Controller
             'ykeys' => ['sum'],
             'labels' => ['Tổng'],
             'xLabels' => $statisticsBy
-
-//            'data' => [
-//                ['day' => '2008', 'value' => 20],
-//                ['day' => '2009', 'value' => 10],
-//                ['day' => '2010', 'value' => 5],
-//                ['day' => '2011', 'value' => 5],
-//                ['day' => '2012', 'value' => 20]
-//            ]
         ];
 
 //            $data = [

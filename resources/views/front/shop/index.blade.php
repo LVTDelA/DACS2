@@ -72,7 +72,7 @@
                                             <option {{(request('show') == '3') ? 'selected' : ''}} value="3">Hiển thị:
                                                 3
                                             </option>
-                                            <option {{(request('show') == '6') ? 'selected' : ''}} value="6">Hiển thị:
+                                            <option {{(request('show') == '6' || !request('show')) ? 'selected' : ''}} value="6">Hiển thị:
                                                 6
                                             </option>
                                             <option {{(request('show') == '9') ? 'selected' : ''}} value="9">Hiển thị:

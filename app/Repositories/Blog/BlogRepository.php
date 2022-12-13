@@ -25,7 +25,7 @@ class BlogRepository extends BaseRepositories implements BlogRepositoryInterface
     public function getPreAndNextBlog($id)
     {
 //        dd($this->model->all());
-        $preBlog = $this->model->where('id', '<', $id)->first();
+        $preBlog = $this->model->where('id', '<', $id)->orderBy('id', 'desc')->first();
         $nextBlog = $this->model->where('id', '>', $id)->first();
 
         return [$preBlog, $nextBlog];
