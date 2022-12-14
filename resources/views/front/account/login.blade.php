@@ -60,6 +60,9 @@
                     <div class="switch-login">
                         <a href="./account/register" class="or-login">Hoặc tạo tài khoản mới !</a>
                     </div>
+                    <div class="switch-login">
+                        <a href="./admin/login" class="btn btn-warning text-white"> Quản lý trang </a>
+                    </div>
                 </div>
             </div>
         </div>

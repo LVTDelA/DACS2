@@ -1,82 +1,74 @@
-<!doctype html>
-<html lang="en">
+@extends('front.layout.master')
 
-<head>
-    <base href="/admin/">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Login | Admin </title>
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-    <meta name="description" content="CodeLean Design">
+@section('title', 'Login')
 
-    <!-- Disable tap highlight on IE -->
-    <meta name="msapplication-tap-highlight" content="no">
+@section('body')
 
-    <link href="./main.css" rel="stylesheet">
-</head>
 
-<body>
-    <div class="app-container app-theme-white body-tabs-shadow">
-        <div class="app-container">
-            <div class="h-100 bg-plum-plate bg-animation ">
-                <div class="d-flex h-100 justify-content-center align-items-center bg-color">
-                    <div class="mx-auto app-login-box col-md-8">
-                        <div class="modal-dialog w-100 mx-auto">
-                            <div class="modal-content">
+    <!-- Breadcrumb (định vị vị trí ở web) -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="./index.html"><i class="fa fa-home">Trang Chủ</i></a>
+                        <span>Đăng nhập</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END Breadcrumb (định vị vị trí ở web) -->
 
-{{-- form --}}
+    <!-- Đăng nhập -->
+    <div class="register-login-section spad ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="login-form">
+                        <h2>Đăng nhập</h2>
 
-                            <form class="" method="post" action="">
-                    @csrf
-
-                                <div class="modal-body">
-                                    <div class="h5 modal-title text-center">
-                                        <h4 class="mt-2">
-                                            <div>Chào mừng</div>
-                                            <span>Hãy đăng nhập vào phía dưới</span>
-                                        </h4>
-                                    </div>
-                    @include('admin.components.notification')
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="position-relative form-group">
-                                                    <input name="email" id="exampleEmail" placeholder="Email"
-                                                        type="email" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="position-relative form-group">
-                                                    <input name="password" id="examplePassword"
-                                                        placeholder="Mật khẩu" type="password"
-                                                        class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="position-relative form-check">
-                                            <input name="remember" id="exampleCheck" type="checkbox"
-                                                class="form-check-input">
-                                            <label for="exampleCheck" class="form-check-label">Nhớ tài khoản</label>
-                                        </div>
-
-                                </div>
-                                <div class="modal-footer clearfix">
-                                    <div class="float-right">
-                                        <button type="submit" class="btn btn-primary btn-lg">Đăng nhập</button>
-                                    </div>
-                                </div>
-
-                            </form>
+                        @if(session('notification'))
+                            <div class="alert alert-warning" role="alert">
+                                {{session('notification')}}
                             </div>
+                        @endif
+
+                        <form action="" method="POST">
+                            @csrf
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="username">Tên đăng nhập hoặc Email <span>*</span></label>
+                                        <input name="email" id="exampleEmail" placeholder="Email"
+                                               type="email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="pass">Mật khẩu <span>*</span></label>
+                                        <input name="password" id="examplePassword"
+                                               placeholder="Mật khẩu" type="password"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="position-relative form-check">
+                                <input name="remember" id="exampleCheck" type="checkbox"
+                                       class="form-check-input">
+                                <label for="exampleCheck" class="form-check-label">Nhớ tài khoản</label>
+                            </div>
+                            <button type="submit" class="site-btn login-btn">Đăng nhập</button>
+                        </form>
+                        <!-- Switch login to sign up -->
+                        <div class="switch-login">
+                            <a href="./account/register" class="or-login">Hoặc tạo tài khoản mới !</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="./assets/scripts/main.js"></script>
-</body>
+    <!-- END Đăng nhập -->
 
-</html>
+@endsection
