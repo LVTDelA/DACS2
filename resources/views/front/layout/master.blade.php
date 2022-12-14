@@ -53,25 +53,27 @@
 
                 @if(Auth::check())
                     <div class="dropdown-ava" style="float:right;">
-                        <img width="38" height="50" class="dropbtn rounded-circle" src="admin/assets/images/avatars/{{Auth::user()->avatar ?? ''}}"
+                        <img width="38" height="50" class="dropbtn rounded-circle"
+                             src="admin/assets/images/avatars/{{Auth::user()->avatar ?? ''}}"
                              alt="">
 
                         <div class="dropdown-content">
                             <a><b>{{Auth::user()->name ?? ''}}</b>
-                        <a href="./account/user/">Chỉnh sửa </a>
-                          <a href="./account/my-order">Đơn hàng của tôi</a>
-                            <a href="./account/logout" class="text-center">
-                                Đăng xuất
+                                <a href="./account/user/">Xem | Chỉnh sửa </a>
+                                <a href="./account/my-order">Đơn hàng của tôi</a>
+                                <a href="./account/logout" class="text-center">
+                                    Đăng xuất
+                                </a>
                             </a>
                         </div>
 
+
                     </div>
 
-
                 @else
-                <a href="./account/login" class="login-panel">
-                    <i class="fa fa-user"> Đăng Nhập</i>
-                </a>
+                    <a href="./account/login" class="login-panel">
+                        <i class="fa fa-user"> Đăng Nhập</i>
+                    </a>
                 @endif
 
             </div>
@@ -95,7 +97,8 @@
                         <div class="advanced-search">
                             <button type="button" class="category-btn">Danh mục</button>
                             <div class="input-group">
-                                <input type="text" name="search" id="" value="{{request('search')}}" placeholder="Nhập vào đây">
+                                <input type="text" name="search" id="" value="{{request('search')}}"
+                                       placeholder="Nhập vào đây">
                                 <button type="submit"><i class="ti-search"> </i></button>
                             </div>
                         </div>
@@ -125,18 +128,20 @@
                                         <tbody>
 
                                         @foreach(Cart::content() as $cart)
-                                        <tr data-rowId="{{$cart->rowId}}">
-                                            <td class="si-pic"><img src="/front/img/products/{{$cart->options->images[0]->path}}" alt=""></td>
-                                            <td class="si-text">
-                                                <div class="product-selected">
-                                                    <p>{{$cart->price}} 000₫ x {{$cart->qty}}</p>
-                                                    <h6>{{$cart->name}}</h6>
-                                                </div>
-                                            </td>
-                                            <td class="si-close">
-                                                <i class="ti-close" onclick="deleteCart('{{$cart->rowId}}')"></i>
-                                            </td>
-                                        </tr>
+                                            <tr data-rowId="{{$cart->rowId}}">
+                                                <td class="si-pic"><img
+                                                        src="/front/img/products/{{$cart->options->images[0]->path}}"
+                                                        alt=""></td>
+                                                <td class="si-text">
+                                                    <div class="product-selected">
+                                                        <p>{{$cart->price}} 000₫ x {{$cart->qty}}</p>
+                                                        <h6>{{$cart->name}}</h6>
+                                                    </div>
+                                                </td>
+                                                <td class="si-close">
+                                                    <i class="ti-close" onclick="deleteCart('{{$cart->rowId}}')"></i>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                         </tbody>
                                     </table>
@@ -264,7 +269,7 @@
 <!-- footer end -->
 
 <!-- tailwind CSS -->
-   {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+{{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 
 <!-- Js Plugins -->
 <script src="front/js/jquery-3.3.1.min.js"></script>

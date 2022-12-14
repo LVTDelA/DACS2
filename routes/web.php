@@ -67,8 +67,11 @@ Route::prefix('account')->group(function () {
         Route::get('/{id}', [Front\AccountController::class, 'myOrderShow']);
     });
 
-    Route::resource('user', \App\Http\Controllers\Front\UserController::class)
-        ->middleware('CheckMemberLogin');
+    Route::prefix('user')->middleware('CheckMemberLogin')->group(function () {
+        Route::get('', [Front\AccountController::class, 'getUser']);
+        Route::put('/{user}', [Front\AccountController::class, 'updateUser']);
+    });
+
 });
 
 Route::prefix('blog')->group(function () {
