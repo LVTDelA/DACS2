@@ -42,16 +42,16 @@
                     <div class="row mt-5" style="margin-top: 35px; display: flex;">
                         <div class="col-6"
                              style="margin-bottom: 25px; flex: 0 0 50%; width: 50%; box-sizing: border-box;">
-                            Tên khách hàng:<b>  {{ $order->first_name . ' ' . $order->last_name }}</b>
+                            <b> Tên khách hàng:</b>  {{ $order->first_name . ' ' . $order->last_name }}
                             <br>
                             <span>
                                 Email: <b style="color: white !important;" href="mailto:{{ $order->email }}" target="_blank">{{ $order->email }}</b>
                             </span>
                             <br>
-                            <span>{{ $order->phone_number }}</span>
+                            <span>Số điện thoại: {{ $order->phone_number }}</span>
                         </div>
                         <div class="col-6" style="flex: 0 0 50%; width: 50%; box-sizing: border-box;">
-                            <b>Ngày đặt hàng:</b> {{ date('d/m/yy H:i', strtotime($order->created_at)) }}
+                            <b>Ngày đặt hàng:</b> {{ date('d/m/yyyy H:i', strtotime($order->created_at)) }}
                             <br>
                             <b>Địa chỉ:</b> {{ $order->street_address }}
                         </div>

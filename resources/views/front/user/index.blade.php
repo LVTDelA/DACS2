@@ -98,7 +98,7 @@
 
                         <div class="position-relative row form-group">
                             <label for="description"
-                                   class="col-md-3 text-md-right col-form-label">Description</label>
+                                   class="col-md-3 text-md-right col-form-label">Thông tin người dùng</label>
                             <div class="col-md-9 col-xl-8">
                                 <textarea name="description" id="description" class="form-control"></textarea>
                             </div>
