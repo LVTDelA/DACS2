@@ -59,9 +59,9 @@
 
                     </div>
                     {{--Chart--}}
-                    <div id="chart" style="height: 250px; width: 1100px"></div>
+                    <div id="area-chart" style="height: 250px; width: 1100px"></div>
                     <br>
-                    <div id="chartbar" style="height: 250px; width: 1100px"></div>
+                    <div id="donut-chart" style="height: 400px; width: 1100px"></div>
                     {{--                                <div class="table-responsive">--}}
                     {{--                                    <table class="align-middle mb-0 table table-borderless table-striped table-hover">--}}
                     {{--                                        <thead>--}}

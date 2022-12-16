@@ -89,6 +89,8 @@ Route::prefix('admin')->middleware('CheckAdminLogin')->group(function () {
         Route::get('', [App\Http\Controllers\Admin\ManageController::class, 'index']);
 
         Route::get('dataChartLine', [App\Http\Controllers\Admin\ManageController::class, 'getDataLineCharts']);
+        Route::get('dataDonutCharts', [\App\Http\Controllers\Admin\ManageController::class, 'getDataDonutCharts'])
+        ->withoutMiddleware('CheckAdminLogin');
     });
 
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);

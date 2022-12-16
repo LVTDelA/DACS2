@@ -22,7 +22,7 @@ class ManageController extends Controller
         $startDate = $request->startDate ?? 0;
         $endDate = $request->endDate ?? date('Y-m-d', time());
 
-        $dateFormat = '';
+//        $dateFormat = '';
         switch ($statisticsBy) {
             case 'day':
                 $dateFormat = '%Y-%m%-%d';
@@ -39,7 +39,7 @@ class ManageController extends Controller
 
 //            dd([$startDate, $endDate]);
         Debugbar::info([$startDate, $endDate]);
-        $data = OrderDetail::selectRaw('
+        $lineChartData = OrderDetail::selectRaw('
                 DATE_FORMAT(created_at, "' . $dateFormat . '") as date,
                 SUM(total) as sum
             ')->whereRaw(
@@ -48,9 +48,8 @@ class ManageController extends Controller
 
 //            dd($data);
 
-
-        $chart = [
-            'data' => $data,
+        $lineChart = [
+            'data' => $lineChartData,
 
             'xkey' => 'date',
             'ykeys' => ['sum'],
@@ -72,7 +71,24 @@ class ManageController extends Controller
 //                    ]
 //            ];
 
-        return $chart;
+        $donutChartData = OrderDetail::join('coffee_products', 'order_details.id_product', '=', 'coffee_products.id')
+            ->selectRaw('name AS label, SUM(qty) AS value')
+            ->groupBy('coffee_products.id')
+            ->get();
+
+
+        $donutChart = [
+            'data' => $donutChartData
+        ];
+
+        return [$lineChart, $donutChart];
 //        }
     }
+
+    public function getDataDonutCharts(Request $request) {
+
+
+        return ;
+    }
+
 }

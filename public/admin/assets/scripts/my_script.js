@@ -37,25 +37,36 @@ function drawLineCharts() {
         url: 'admin/manage/dataChartLine',
         data: dataParam
     })
-        .done((chart) => {
-            console.log(chart);
+        .done((charts) => {
+            let lineChart = charts[0];
+            console.log(lineChart);
 
-            $('#chart').empty();
+            $('#area-chart').empty();
 
             new Morris.Area({
-                data: chart.data,
+                data: lineChart.data,
 
-                element: 'chart',
-                xkey: chart.xkey,
-                xLabels: chart.xLabels,
+                element: 'area-chart',
+                xkey: lineChart.xkey,
+                xLabels: lineChart.xLabels,
                 // xLabelFormat: (x) => {
                 //     x
                 // },
-                ykeys: chart.ykeys,
+                ykeys: lineChart.ykeys,
                 postUnits: ' 000 VND',
-                labels: chart.labels,
-
+                labels: lineChart.labels,
             });
+
+
+            let donutChart = charts[1];
+            console.log(donutChart);
+
+            new Morris.Donut({
+                data: donutChart.data,
+
+                element: 'donut-chart',
+                resize: true
+            })
         })
         .fail(() => {
 
