@@ -52,7 +52,6 @@ class ShopController extends Controller
         $products = $this->productService->getProductOnIndex($request);
 
 
-//        dd($products->links());
         return view('front.shop.index', compact('categories', 'brands', 'products'));
     }
 

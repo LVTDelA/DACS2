@@ -63,7 +63,7 @@ class AppServiceProvider extends ServiceProvider
         );
 
         //Coffee category
-        $this->app->singleton(
+       $this->app->singleton(
             ProductCategoryRepositoryInterface::class,
             ProductCategoryRepository::class
         );

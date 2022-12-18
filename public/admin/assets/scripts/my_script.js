@@ -20,12 +20,17 @@ $(document).ready(function () {
     drawLineCharts();
 });
 
-function drawLineCharts() {
-    let form = $('#line-charts:first');
 
+// morris chart
+
+
+function drawLineCharts() {
+    //lấy dữ liệu từ form
+    let form = $('#line-charts:first');
+    //print check
     console.log(form.find('#startDate').val());
     console.log(form.find('#endDate').val());
-
+//import data from form
     let dataParam = {
         statisticsBy: form.find('select').val(),
         startDate: form.find('#startDate').val(),
@@ -41,7 +46,7 @@ function drawLineCharts() {
             let lineChart = charts[0];
             console.log(lineChart);
 
-            $('#area-chart').empty();
+            $('#area-chart').empty();    //xóa biểu đồ cũ
 
             new Morris.Area({
                 data: lineChart.data,
@@ -56,7 +61,6 @@ function drawLineCharts() {
                 postUnits: ' 000 VND',
                 labels: lineChart.labels,
             });
-
 
             let donutChart = charts[1];
             console.log(donutChart);

@@ -50,7 +50,6 @@ class CheckOutController extends Controller
                 'qty' => $cart->qty,
                 'amount' => $cart->price,
                 'total' => $cart->price * $cart->qty,
-
             ];
 
             $this->orderDetailService->create($data);
@@ -123,10 +122,9 @@ class CheckOutController extends Controller
         $email_to = $order->email;
 
         Mail::send('front.checkout.email', compact('order', 'total'), function ($message) use ($email_to) {
-            $message->from('votheluc02@gmail.com', 'VKU_COFFEE');
+            $message->from('quangt.21it@vku.udn.vn', 'VKU_COFFEE');
             $message->to($email_to, $email_to);
             $message->subject('Thông tin đơn hàng');
-
         });
     }
 }

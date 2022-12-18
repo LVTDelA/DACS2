@@ -37,8 +37,7 @@ class CartController extends Controller
 
             $response['count'] = Cart::count();
             $response['total'] = Cart::total(0, '', ' ');
-//            dd(Cart::content());
-//            dd($response);
+
             return $response;
         }
 

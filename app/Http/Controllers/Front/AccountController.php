@@ -77,7 +77,6 @@ class AccountController extends Controller
 //      $orders = $this->orderService->where('user_id', Auth::id())->orderBy('id', 'desc')->get();
         $orders = $this->orderService->getOrdersByUser(Auth::id())->orderBy('id', 'desc')->get();;  //desc là giảm dần //asc là tăng dân
 
-
         return view('front.account.my-order.index', compact('orders'));
     }
 

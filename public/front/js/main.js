@@ -1,11 +1,3 @@
-/*  ---------------------------------------------------
-    Template Name: codelean
-    Description: codelean eCommerce HTML Template
-    Author: CodeLean
-    Author URI: https://CodeLean.vn/
-    Version: 1.0
-    Created: CodeLean
----------------------------------------------------------  */
 
 'use strict';
 
@@ -275,7 +267,6 @@ function addCart(productId, qty = 1) {
     $.ajax({
         type: 'GET',
         url: 'cart/add?' + $.param({productId: parseInt(productId), qty: parseInt(qty)}),
-        // contentType: false,
     })
         .done((response) => {
             $('.cart-count').text(response['count']);
@@ -386,6 +377,7 @@ function deleteCart(rowId) {
 function formatNumber(x) {
     return x.toLocaleString().replace(',', ' ');
 }
+
 //chỉnh thư viện toastr
 toastr.options = {
     "closeButton": true,
