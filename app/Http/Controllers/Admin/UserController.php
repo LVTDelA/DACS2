@@ -113,14 +113,14 @@ class UserController extends Controller
         unset($data['password']);
     }
 
-    // Xu li file anh
-        if ($request->hasFile('image')){
+        // Xu li file anh
+        if ($request->hasFile('image')) {
             //add new img
-            $data['avatar'] = Common::uploadFile($request->file('image'),'admin/assets/images/avatars' );
+            $data['avatar'] = Common::uploadFile($request->file('image'), 'admin/assets/images/avatars');
             //xoa file cu
             $file_name_old = $request->get('image_old');
-            if ($file_name_old != ''){
-                unlink('admin/assets/images/avatars/' .$file_name_old);
+            if ($file_name_old != '') {
+                unlink('admin/assets/images/avatars/' . $file_name_old);
             }
         }
 

@@ -52,6 +52,23 @@
             <div class="ht-right">
 
                 @if(Auth::check())
+                    @if(empty(Auth::user()->avatar ?? ''))
+                    <div class="dropdown-ava" style="float:right;">
+                        <img width="38" height="50" class="dropbtn rounded-circle"
+                             src="admin/assets/images/default-avatar.png" alt="Avatar"
+                             alt="">
+
+                        <div class="dropdown-content">
+                            <a><b>{{Auth::user()->name ?? ''}}</b>
+                                <a href="./account/user/">Xem | Chỉnh sửa </a>
+                                <a href="./account/my-order">Đơn hàng của tôi</a>
+                                <a href="./account/logout" class="text-center">
+                                    Đăng xuất
+                                </a>
+                            </a>
+                        </div>
+                    </div>
+                        @else
                     <div class="dropdown-ava" style="float:right;">
                         <img width="38" height="50" class="dropbtn rounded-circle"
                              src="admin/assets/images/avatars/{{Auth::user()->avatar ?? ''}}"
@@ -66,10 +83,8 @@
                                 </a>
                             </a>
                         </div>
-
-
                     </div>
-
+                        @endif
                 @else
                     <a href="./account/login" class="login-panel">
                         <i class="fa fa-user"> Đăng Nhập</i>
@@ -270,7 +285,6 @@
 
 <!-- tailwind CSS -->
 {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-
 <!-- Js Plugins -->
 <script src="front/js/jquery-3.3.1.min.js"></script>
 <script src="front/js/bootstrap.min.js"></script>

@@ -13,6 +13,7 @@
 
                         @method('PUT')
                         @include('admin.components.notification')
+                        @if(empty(Auth::user()->avatar ?? ''))
                         <div class="position-relative row form-group">
                             <label for="image"
                                    class="col-md-3 text-md-right col-form-label">Avatar</label>
@@ -20,7 +21,7 @@
                                 <img style="height: 200px; cursor: pointer;"
                                      class="thumbnail rounded-circle" data-toggle="tooltip"
                                      title="Click to change the image" data-placement="bottom"
-                                     src="admin/assets/images/avatars/{{$user->avatar}}" alt="Avatar">
+                                     src="admin/assets/images/default-avatar.png" alt="Avatar">
                                 <input name="image" type="file" onchange="changeImg(this)"
                                        class="image form-control-file" style="display: none;" value="">
                                 <input type="hidden" name="image_old" value="{{$user -> avatar}}">
@@ -29,7 +30,24 @@
                                 </small>
                             </div>
                         </div>
-
+                        @else
+                            <div class="position-relative row form-group">
+                                <label for="image"
+                                       class="col-md-3 text-md-right col-form-label">Avatar</label>
+                                <div class="col-md-9 col-xl-8">
+                                    <img style="height: 200px; cursor: pointer;"
+                                         class="thumbnail rounded-circle" data-toggle="tooltip"
+                                         title="Click to change the image" data-placement="bottom"
+                                         src="admin/assets/images/avatars/{{$user->avatar}}" alt="Avatar">
+                                    <input name="image" type="file" onchange="changeImg(this)"
+                                           class="image form-control-file" style="display: none;" value="">
+                                    <input type="hidden" name="image_old" value="{{$user -> avatar}}">
+                                    <small class="form-text text-muted">
+                                        Nhấn vào để thay đổi ảnh đại diện
+                                    </small>
+                                </div>
+                            </div>
+                        @endif
                         <div class="position-relative row form-group">
                             <label for="name" class="col-md-3 text-md-right col-form-label">Họ tên</label>
                             <div class="col-md-9 col-xl-8">
