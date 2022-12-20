@@ -18,14 +18,15 @@ class CheckAdminLogin
      */
     public function handle(Request $request, Closure $next)
     {
-
+// Nếu ta sử dụng Authentication của Laravel, ta sẽ có sẵn 2 middleware là guest và auth.
+        //Guest chua dang nhap
         if (Auth::guest()) {
             return redirect()->guest('admin/login');
         }
-            //neu da dn nhung sai level : dang xuat va dn lai
+            //neu da dn nhung sai level : dang xuat va dn lai (auth: da dang nhap)
         if(Auth::user()->level != Constant::user_level_host && Auth::user()->level != Constant::user_level_admin ){
             Auth::logout();
-            
+
             return redirect()->guest('admin/login');
         }
 

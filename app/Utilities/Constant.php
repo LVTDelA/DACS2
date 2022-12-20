@@ -15,9 +15,9 @@ class Constant
     const order_status_Cancel = 0;
     public static $order_status = [
         self::order_status_ReceiveOrder => 'Nhận đơn',
-        self::order_status_Unconfirmed => 'Chưa xác nhận',
+        self::order_status_Unconfirmed => 'Chưa xác nhận đơn',
         self::order_status_Confirmed => 'Đã xác nhận',
-        self::order_status_Paid => 'Trả trước',
+        self::order_status_Paid => 'Đã trả trước',
         self::order_status_Processing => 'Xử lý',
         self::order_status_Shipping => 'Đang giao hàng',
         self::order_status_Finish => 'Hoàn thành',

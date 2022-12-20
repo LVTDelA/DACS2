@@ -84,7 +84,7 @@ class CheckOutController extends Controller
 //        Kiểm tra data
         if ($vnp_ResponseCode != null) {
             if ($vnp_ResponseCode == 00) {
-//                Cập nhật trạng thái đơn hàng
+//      Cập nhật trạng thái đơn hàng
                 $this->orderService->find($vnp_TxnRef)->update(['status' => Constant::order_status_Paid]);
 //                Gửi mail
                 $order = $this->orderService->find($vnp_TxnRef);
@@ -99,7 +99,6 @@ class CheckOutController extends Controller
                     ->with('notification', 'Đặt hàng và thanh toán thành công, cám ơn bạn đã lựa chọn chúng tôi. Hãy kiểm tra email của bạn.');
             } else {
 //                Xóa đơn hàng đã lưu vào DB
-
                 $this->orderDetailService->deleteAllOrderDetailByIdOrder($vnp_TxnRef);
                 $this->orderService->find($vnp_TxnRef)->delete();
 

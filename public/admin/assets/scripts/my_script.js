@@ -71,6 +71,10 @@ function drawLineCharts() {
                 element: 'donut-chart',
                 resize: true
             })
+            $('div svg text').css({
+                "font-family" : "'Open Sans',sans-serif",
+                "padding" : "3%"
+            });
         })
         .fail(() => {
 

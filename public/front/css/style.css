@@ -143,8 +143,16 @@ ol {
 .text-white a {
     color: #fff;
 }
-
+#xProfileChart svg text {
+    font-family: FontAwesome !important;
+}
 /* buttons */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+#donut-chart *{
+    font-family:Open Sans;
+}
+
 
 .primary-btn {
     display: inline-block;

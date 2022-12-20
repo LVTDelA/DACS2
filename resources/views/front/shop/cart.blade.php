@@ -93,7 +93,7 @@
                 </div>
                 @else
                     <div class="col-lg-12">
-                        <h4>Ohh! Chưa có gì ở đây cả.</h4>
+                        <h4 class="text-center">Hiện tại giỏ hàng chưa có gì cả, xin quý khách vui lòng <a href="./shop" style="color:orange">mua hàng tại cửa hàng</a>.</h4>
                     </div>
                 @endif
             </div>

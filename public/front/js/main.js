@@ -223,8 +223,11 @@
 
     $('.product-pic-zoom').zoom();
 
+
+
+
     /*-------------------
-		Quantity change
+		Thay đổi số lượng
 	--------------------- */
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
@@ -262,7 +265,11 @@
 
     });
 })(jQuery);
+
+
 //js add cart
+
+
 function addCart(productId, qty = 1) {
     $.ajax({
         type: 'GET',

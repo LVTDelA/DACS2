@@ -127,7 +127,35 @@
                                         <label for="status" class="col-md-3 text-md-right col-form-label">Trạng thái</label>
                                         <div class="col-md-9 col-xl-8">
                                             <div class="badge badge-dark mt-2">
-                                                {{App\Utilities\Constant::$order_status[$order->status]}}
+                                                    {{App\Utilities\Constant::$order_status[$order->status]}}
+{{--                                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">--}}
+{{--                                                    <option selected>Tuỳ chỉnh trạng thái đơn hàng :</option>--}}
+{{--                                                    <option {{$this->orderService->update(['status' => Constant::order_status_ReceiveOrder])}} value="1">--}}
+{{--                                                        Nhận đơn--}}
+{{--                                                    </option>--}}
+{{--                                                    <option {{$this->orderService->update(['status' => Constant::order_status_Unconfirmed])}} value="2">--}}
+{{--                                                        Chưa xác nhận đơn--}}
+{{--                                                    </option>--}}
+{{--                                                    <option {{$this->orderService->update(['status' => Constant::order_status_Confirmed])}} value="3">--}}
+{{--                                                        Đã xác nhận--}}
+{{--                                                    </option>--}}
+{{--                                                    <option {{$this->orderService->update(['status' => Constant::order_status_Paid])}} value="4">--}}
+{{--                                                        Đã trả trước--}}
+{{--                                                    </option>--}}
+{{--                                                    <option {{$this->orderService->update(['status' => Constant::order_status_Processing])}} value="5">--}}
+{{--                                                        Xử lý--}}
+{{--                                                    </option>--}}
+{{--                                                    <option {{$this->orderService->update(['status' => Constant::order_status_Shipping])}} value="6">--}}
+{{--                                                        Đang giao hàng--}}
+{{--                                                    </option>--}}
+{{--                                                    <option {{$this->orderService->update(['status' => Constant::order_status_Finish])}} value="7">--}}
+{{--                                                        Hoàn thành--}}
+{{--                                                    </option>--}}
+{{--                                                    <option {{$this->orderService->update(['status' => Constant::order_status_Cancel])}} value="8">--}}
+{{--                                                        Hủy đơn--}}
+{{--                                                    </option>--}}
+{{--                                                </select>--}}
+
                                             </div>
                                         </div>
                                     </div>
